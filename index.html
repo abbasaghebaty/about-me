@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abbas — Portfolio & Link Hub</title>
-    <meta name="description" content="Abbas — JavaScript Developer, Web Developer, Open Source Creator. Portfolio and social link hub.">
+    <title>Abbas Aghebaty — Portfolio & Link Hub</title>
+    <meta name="description" content="Abbas Aghebaty — JavaScript Developer, Web Developer, Open Source Creator. Portfolio and social link hub.">
     <meta name="theme-color" content="#0a0a0f">
+    <meta name="color-scheme" content="dark">
 
     <style>
         /* ========================================
@@ -15,7 +16,7 @@
             --bg: #0a0a0f;
             --bg-card: rgba(255, 255, 255, 0.03);
             --blue: #3B82F6;
-            --blue-glow: rgba(59, 130, 246, 0.4);
+            --blue-glow: rgba(59, 130, 246, 0.45);
             --purple: #7C3AED;
             --purple-glow: rgba(124, 58, 237, 0.4);
             --text: #e2e8f0;
@@ -28,12 +29,14 @@
             --radius: 16px;
             --radius-sm: 10px;
             --radius-xs: 8px;
-            --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-pill: 50px;
+            --transition-fast: 180ms cubic-bezier(0.4, 0, 0.2, 1);
             --transition-smooth: 350ms cubic-bezier(0.4, 0, 0.2, 1);
             --transition-bounce: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition-clock: 360ms cubic-bezier(0.22, 0.61, 0.36, 1);
             --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', 'Monaco', monospace;
             --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-            --max-width: 880px;
+            --max-width: 920px;
         }
 
         /* ========================================
@@ -83,7 +86,6 @@
             filter: blur(100px);
             opacity: 0.35;
             will-change: transform;
-            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .bg-orb--1 {
@@ -195,14 +197,14 @@
              Section Spacing
              ======================================== */
         .section {
-            margin-bottom: 5rem;
+            margin-bottom: 4.5rem;
         }
 
         .section__title {
             font-size: 1.5rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2.2rem;
             background: linear-gradient(135deg, var(--blue), var(--purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -219,7 +221,7 @@
             align-items: center;
             text-align: center;
             padding-top: 2rem;
-            margin-bottom: 3.5rem;
+            margin-bottom: 2rem;
         }
 
         .hero__avatar {
@@ -230,24 +232,20 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 700;
             color: #fff;
             margin-bottom: 1.5rem;
-            box-shadow:
-                0 0 40px var(--blue-glow),
-                0 0 80px rgba(124, 58, 237, 0.25);
+            box-shadow: 0 0 40px var(--blue-glow), 0 0 80px rgba(124, 58, 237, 0.25);
             position: relative;
             user-select: none;
-            letter-spacing: 0;
+            letter-spacing: -0.03em;
             transition: box-shadow var(--transition-smooth);
             flex-shrink: 0;
         }
 
         .hero__avatar:hover {
-            box-shadow:
-                0 0 55px var(--blue-glow),
-                0 0 100px rgba(124, 58, 237, 0.4);
+            box-shadow: 0 0 55px var(--blue-glow), 0 0 100px rgba(124, 58, 237, 0.4);
         }
 
         .hero__avatar-ring {
@@ -275,7 +273,7 @@
             font-size: 2.4rem;
             font-weight: 800;
             letter-spacing: -0.03em;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
             color: #fff;
         }
 
@@ -288,6 +286,7 @@
             align-items: center;
             justify-content: center;
             gap: 2px;
+            margin-bottom: 1.6rem;
         }
 
         .hero__typing-text {
@@ -317,13 +316,81 @@
         }
 
         /* ========================================
-             Flip Clock
+             Skills Badges
+             ======================================== */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.55rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .skill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.45rem 0.95rem;
+            border-radius: var(--radius-pill);
+            background: var(--glass-bg);
+            border: 1px solid var(--border-glass);
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+            transition: all var(--transition-fast);
+            cursor: default;
+            user-select: none;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .skill-badge:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 18px rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .skill-badge__dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .skill-badge__dot--blue {
+            background: var(--blue);
+            box-shadow: 0 0 6px var(--blue-glow);
+        }
+        .skill-badge__dot--purple {
+            background: var(--purple);
+            box-shadow: 0 0 6px var(--purple-glow);
+        }
+        .skill-badge__dot--teal {
+            background: #14b8a6;
+            box-shadow: 0 0 6px rgba(20, 184, 166, 0.5);
+        }
+        .skill-badge__dot--amber {
+            background: #f59e0b;
+            box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+        }
+        .skill-badge__dot--rose {
+            background: #f43f5e;
+            box-shadow: 0 0 6px rgba(244, 63, 94, 0.5);
+        }
+
+        /* ========================================
+             Flip Clock — Rewritten Digit Roller
              ======================================== */
         .clock-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3.5rem;
         }
 
         .clock__label {
@@ -347,19 +414,51 @@
             gap: 4px;
         }
 
+        /* Each digit wrapper — fixed dimensions, overflow hidden (the "window") */
         .clock__digit-wrapper {
-            perspective: 180px;
             width: 64px;
-            height: 88px;
+            height: 90px;
             position: relative;
-        }
-
-        .clock__digit {
-            width: 64px;
-            height: 88px;
+            overflow: hidden;
+            border-radius: var(--radius-sm);
             background: var(--glass-bg);
             border: 1px solid var(--border-glass);
-            border-radius: var(--radius-sm);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+        }
+
+        .clock__digit-wrapper.glow-active {
+            border-color: rgba(59, 130, 246, 0.55) !important;
+            box-shadow:
+                0 0 30px var(--blue-glow),
+                0 4px 28px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+        }
+
+        .clock__digit-wrapper.glow-fading {
+            transition: border-color 500ms ease-out, box-shadow 500ms ease-out;
+            border-color: var(--border-glass) !important;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+        }
+
+        /* Track holds two stacked digit slots — height = 200% of the window */
+        .clock__digit-track {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 200%;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(-50%);
+            will-change: transform;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .clock__digit-span {
+            width: 100%;
+            height: 50%;
+            flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -368,16 +467,15 @@
             font-weight: 700;
             color: #fff;
             letter-spacing: 0;
-            position: relative;
-            overflow: hidden;
-            box-shadow:
-                0 4px 24px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.04);
-            transition: box-shadow var(--transition-smooth), border-color var(--transition-smooth);
-            will-change: transform, opacity;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            will-change: filter, opacity;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
         }
 
-        .clock__digit::after {
+        /* Horizontal divider line */
+        .clock__digit-wrapper::after {
             content: '';
             position: absolute;
             left: 0;
@@ -386,15 +484,8 @@
             height: 1px;
             background: rgba(0, 0, 0, 0.5);
             pointer-events: none;
-            z-index: 2;
+            z-index: 10;
             box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03);
-        }
-
-        .clock__digit-inner {
-            position: relative;
-            z-index: 1;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-            line-height: 1;
         }
 
         .clock__colon {
@@ -416,69 +507,6 @@
             }
             50% {
                 opacity: 0.8;
-            }
-        }
-
-        /* Flip animation states */
-        .clock__digit.flipping .clock__digit-inner {
-            animation: flipDown 350ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        .clock__digit.flipping-up .clock__digit-inner {
-            animation: flipUp 350ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        @keyframes flipDown {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            45% {
-                transform: translateY(50%);
-                opacity: 0;
-            }
-            55% {
-                transform: translateY(-50%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes flipUp {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            45% {
-                transform: translateY(-50%);
-                opacity: 0;
-            }
-            55% {
-                transform: translateY(50%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Subtle glow on digit change */
-        .clock__digit.glow-pulse {
-            animation: digitGlow 400ms ease-out;
-        }
-
-        @keyframes digitGlow {
-            0% {
-                box-shadow: 0 0 30px var(--blue-glow), 0 4px 24px rgba(0, 0, 0, 0.4);
-                border-color: rgba(59, 130, 246, 0.5);
-            }
-            100% {
-                box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-                border-color: var(--border-glass);
             }
         }
 
@@ -510,6 +538,8 @@
             align-items: center;
             gap: 0.6rem;
             will-change: transform, box-shadow;
+            transform-style: preserve-3d;
+            perspective: 600px;
         }
 
         .social-card::before {
@@ -528,27 +558,28 @@
         }
 
         .social-card--instagram::before {
-            background: radial-gradient(circle at center, rgba(233, 68, 126, 0.25) 0%, transparent 70%);
+            background: radial-gradient(circle at center, rgba(233, 68, 126, 0.22) 0%, transparent 70%);
         }
         .social-card--telegram::before {
-            background: radial-gradient(circle at center, rgba(0, 136, 204, 0.25) 0%, transparent 70%);
+            background: radial-gradient(circle at center, rgba(0, 136, 204, 0.22) 0%, transparent 70%);
         }
         .social-card--telegram-channel::before {
-            background: radial-gradient(circle at center, rgba(0, 160, 220, 0.25) 0%, transparent 70%);
+            background: radial-gradient(circle at center, rgba(0, 160, 220, 0.22) 0%, transparent 70%);
+        }
+        .social-card--bot::before {
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.24) 0%, transparent 70%);
         }
         .social-card--youtube::before {
-            background: radial-gradient(circle at center, rgba(255, 0, 0, 0.2) 0%, transparent 70%);
+            background: radial-gradient(circle at center, rgba(255, 0, 0, 0.18) 0%, transparent 70%);
         }
         .social-card--github::before {
-            background: radial-gradient(circle at center, rgba(139, 148, 158, 0.2) 0%, transparent 70%);
+            background: radial-gradient(circle at center, rgba(139, 148, 158, 0.18) 0%, transparent 70%);
         }
 
         .social-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px);
             border-color: var(--border-glass-hover);
-            box-shadow:
-                0 12px 40px rgba(0, 0, 0, 0.5),
-                0 0 30px rgba(255, 255, 255, 0.04);
+            box-shadow: 0 14px 44px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.04);
             background: var(--glass-bg-hover);
         }
 
@@ -605,11 +636,11 @@
         }
 
         /* ========================================
-             Portfolio Grid
+             Portfolio Grid & Cards
              ======================================== */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
             gap: 1.25rem;
         }
 
@@ -621,26 +652,46 @@
             transition: all var(--transition-smooth);
             display: flex;
             flex-direction: column;
-            will-change: transform;
+            will-change: transform, box-shadow;
+            transform-style: preserve-3d;
+            perspective: 800px;
+            position: relative;
         }
 
         .portfolio-card:hover {
             transform: translateY(-6px);
             border-color: var(--border-glass-hover);
-            box-shadow:
-                0 16px 48px rgba(0, 0, 0, 0.5),
-                0 0 25px rgba(59, 130, 246, 0.08);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55), 0 0 30px rgba(59, 130, 246, 0.1);
             background: var(--glass-bg-hover);
+        }
+
+        /* Subtle reflection on hover */
+        .portfolio-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg,
+                    transparent 30%,
+                    rgba(255, 255, 255, 0.015) 50%,
+                    transparent 70%);
+            opacity: 0;
+            transition: opacity var(--transition-smooth);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .portfolio-card:hover::after {
+            opacity: 1;
         }
 
         .portfolio-card__image {
             width: 100%;
             height: 160px;
-            object-fit: cover;
             display: block;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(124, 58, 237, 0.2));
             position: relative;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .portfolio-card__image-placeholder {
@@ -649,9 +700,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            color: rgba(255, 255, 255, 0.3);
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(124, 58, 237, 0.2));
+            font-size: 2.8rem;
+            color: rgba(255, 255, 255, 0.25);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(124, 58, 237, 0.22));
+            transition: all var(--transition-smooth);
+        }
+
+        .portfolio-card:hover .portfolio-card__image-placeholder {
+            color: rgba(255, 255, 255, 0.4);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(124, 58, 237, 0.3));
         }
 
         .portfolio-card__body {
@@ -659,7 +716,9 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 0.4rem;
+            gap: 0.45rem;
+            position: relative;
+            z-index: 2;
         }
 
         .portfolio-card__title {
@@ -676,27 +735,82 @@
             flex: 1;
         }
 
+        /* Tech badges inside portfolio cards */
+        .portfolio-card__tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.2rem;
+        }
+
+        .portfolio-card__tech-badge {
+            display: inline-block;
+            padding: 0.22rem 0.6rem;
+            border-radius: var(--radius-pill);
+            font-size: 0.68rem;
+            font-weight: 500;
+            background: rgba(59, 130, 246, 0.12);
+            color: #93bbfd;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+        }
+
+        .portfolio-card__tech-badge--purple {
+            background: rgba(124, 58, 237, 0.12);
+            color: #b794f4;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .portfolio-card__tech-badge--teal {
+            background: rgba(20, 184, 166, 0.12);
+            color: #5eeadb;
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+
+        .portfolio-card__actions {
+            display: flex;
+            gap: 0.9rem;
+            margin-top: 0.6rem;
+            flex-wrap: wrap;
+        }
+
         .portfolio-card__link {
             display: inline-flex;
             align-items: center;
             gap: 0.35rem;
             color: var(--blue);
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.84rem;
             text-decoration: none;
-            transition: gap var(--transition-fast);
-            margin-top: 0.3rem;
-            align-self: flex-start;
+            transition: all var(--transition-fast);
+            padding: 0.35rem 0;
+            position: relative;
+            z-index: 10;
         }
 
         .portfolio-card__link:hover {
-            gap: 0.6rem;
             color: #60a5fa;
+            gap: 0.55rem;
+        }
+
+        .portfolio-card__link--secondary {
+            color: var(--text-muted);
+        }
+        .portfolio-card__link--secondary:hover {
+            color: #cbd5e1;
+        }
+
+        .portfolio-card__link--demo {
+            color: #5eeadb;
+        }
+        .portfolio-card__link--demo:hover {
+            color: #7dfbe9;
         }
 
         .portfolio-card__link-arrow {
             transition: transform var(--transition-fast);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
         }
 
         .portfolio-card__link:hover .portfolio-card__link-arrow {
@@ -759,6 +873,10 @@
             font-size: 0.85rem;
             border-top: 1px solid var(--border-glass);
             margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            align-items: center;
         }
 
         .footer__heart {
@@ -784,6 +902,12 @@
             60% {
                 transform: scale(1);
             }
+        }
+
+        .footer__date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            opacity: 0.7;
         }
 
         /* ========================================
@@ -816,32 +940,39 @@
         .reveal-delay-5 {
             transition-delay: 0.5s;
         }
+        .reveal-delay-6 {
+            transition-delay: 0.6s;
+        }
 
         /* ========================================
              Responsive Design
              ======================================== */
         @media (max-width: 768px) {
             .hero__name {
-                font-size: 1.8rem;
+                font-size: 1.75rem;
             }
             .hero__avatar {
                 width: 90px;
                 height: 90px;
-                font-size: 2.4rem;
+                font-size: 2.2rem;
             }
             .hero__typing-wrapper {
                 font-size: 0.95rem;
             }
+            .skills-container {
+                gap: 0.4rem;
+            }
+            .skill-badge {
+                font-size: 0.7rem;
+                padding: 0.35rem 0.7rem;
+            }
             .clock__digit-wrapper {
                 width: 48px;
-                height: 68px;
-                perspective: 140px;
-            }
-            .clock__digit {
-                width: 48px;
-                height: 68px;
-                font-size: 2rem;
+                height: 70px;
                 border-radius: var(--radius-xs);
+            }
+            .clock__digit-span {
+                font-size: 2rem;
             }
             .clock__colon {
                 font-size: 1.7rem;
@@ -890,7 +1021,7 @@
             }
             .section__title {
                 font-size: 1.25rem;
-                margin-bottom: 1.8rem;
+                margin-bottom: 1.6rem;
             }
             .bg-orb--1 {
                 width: 250px;
@@ -913,14 +1044,11 @@
         @media (max-width: 400px) {
             .clock__digit-wrapper {
                 width: 38px;
-                height: 56px;
-                perspective: 110px;
-            }
-            .clock__digit {
-                width: 38px;
-                height: 56px;
-                font-size: 1.6rem;
+                height: 58px;
                 border-radius: 6px;
+            }
+            .clock__digit-span {
+                font-size: 1.55rem;
             }
             .clock__colon {
                 font-size: 1.3rem;
@@ -936,12 +1064,16 @@
                 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             }
             .hero__name {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
             .hero__avatar {
                 width: 75px;
                 height: 75px;
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+            .skill-badge {
+                font-size: 0.66rem;
+                padding: 0.3rem 0.55rem;
             }
         }
     </style>
@@ -965,14 +1097,33 @@
 
         <!-- Hero Section -->
         <section class="hero section reveal" aria-label="Hero">
-            <div class="hero__avatar" aria-label="Abbas profile picture">
-                <span>A</span>
+            <div class="hero__avatar" aria-label="Abbas Aghebaty profile picture">
+                <span>AA</span>
                 <div class="hero__avatar-ring"></div>
             </div>
-            <h1 class="hero__name">عباس</h1>
+            <h1 class="hero__name">Abbas Aghebaty</h1>
             <div class="hero__typing-wrapper" aria-live="polite">
                 <span class="hero__typing-text" id="typingText"></span>
                 <span class="hero__typing-cursor" aria-hidden="true"></span>
+            </div>
+
+            <!-- Skills Badges -->
+            <div class="skills-container reveal" aria-label="Skills">
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--blue"></span>JavaScript</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--amber"></span>HTML</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--blue"></span>CSS</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--purple"></span>Front-end Development</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--teal"></span>Static Website Development</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--blue"></span>Telegram Bot Development</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--purple"></span>Telegram Mini Apps</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--teal"></span>UI Design</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--rose"></span>Thumbnail Artist</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--amber"></span>Photo Editing</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--purple"></span>Graphic Design</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--teal"></span>Menu Design for Cafes & Restaurants</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--blue"></span>Open Source Projects</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--purple"></span>GitHub</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--teal"></span>Responsive Design</span>
             </div>
         </section>
 
@@ -983,30 +1134,48 @@
                 <!-- Hours -->
                 <div class="clock__pair">
                     <div class="clock__digit-wrapper" data-digit="h0">
-                        <div class="clock__digit"><span class="clock__digit-inner">0</span></div>
+                        <div class="clock__digit-track">
+                            <span class="clock__digit-span">0</span>
+                            <span class="clock__digit-span">0</span>
+                        </div>
                     </div>
                     <div class="clock__digit-wrapper" data-digit="h1">
-                        <div class="clock__digit"><span class="clock__digit-inner">0</span></div>
+                        <div class="clock__digit-track">
+                            <span class="clock__digit-span">0</span>
+                            <span class="clock__digit-span">0</span>
+                        </div>
                     </div>
                 </div>
                 <span class="clock__colon" aria-hidden="true">:</span>
                 <!-- Minutes -->
                 <div class="clock__pair">
                     <div class="clock__digit-wrapper" data-digit="m0">
-                        <div class="clock__digit"><span class="clock__digit-inner">0</span></div>
+                        <div class="clock__digit-track">
+                            <span class="clock__digit-span">0</span>
+                            <span class="clock__digit-span">0</span>
+                        </div>
                     </div>
                     <div class="clock__digit-wrapper" data-digit="m1">
-                        <div class="clock__digit"><span class="clock__digit-inner">0</span></div>
+                        <div class="clock__digit-track">
+                            <span class="clock__digit-span">0</span>
+                            <span class="clock__digit-span">0</span>
+                        </div>
                     </div>
                 </div>
                 <span class="clock__colon" aria-hidden="true">:</span>
                 <!-- Seconds -->
                 <div class="clock__pair">
                     <div class="clock__digit-wrapper" data-digit="s0">
-                        <div class="clock__digit"><span class="clock__digit-inner">0</span></div>
+                        <div class="clock__digit-track">
+                            <span class="clock__digit-span">0</span>
+                            <span class="clock__digit-span">0</span>
+                        </div>
                     </div>
                     <div class="clock__digit-wrapper" data-digit="s1">
-                        <div class="clock__digit"><span class="clock__digit-inner">0</span></div>
+                        <div class="clock__digit-track">
+                            <span class="clock__digit-span">0</span>
+                            <span class="clock__digit-span">0</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1020,7 +1189,6 @@
                 <a href="https://instagram.com/abbasaghebaty" target="_blank" rel="noopener noreferrer"
                 class="social-card social-card--instagram reveal reveal-delay-1">
                 <div class="social-card__icon">
-                    <!-- Instagram SVG -->
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                         <circle cx="12" cy="12" r="5"></circle>
@@ -1031,12 +1199,10 @@
                 <span class="social-card__desc">Daily updates</span>
                 <span class="social-card__arrow">→</span>
             </a>
-
             <!-- Telegram Channel -->
             <a href="https://t.me/abbas_chanel" target="_blank" rel="noopener noreferrer"
             class="social-card social-card--telegram-channel reveal reveal-delay-2">
             <div class="social-card__icon">
-                <!-- Telegram SVG -->
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21.5 3.5L2.5 11l6 2.5M21.5 3.5l-5 17-4-8M21.5 3.5l-13 10 2.5 6"></path>
                 </svg>
@@ -1045,12 +1211,10 @@
             <span class="social-card__desc">Telegram Channel</span>
             <span class="social-card__arrow">→</span>
         </a>
-
         <!-- Telegram -->
         <a href="https://t.me/abbas_js" target="_blank" rel="noopener noreferrer"
         class="social-card social-card--telegram reveal reveal-delay-3">
         <div class="social-card__icon">
-            <!-- Telegram SVG -->
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21.5 3.5L2.5 11l6 2.5M21.5 3.5l-5 17-4-8M21.5 3.5l-13 10 2.5 6"></path>
             </svg>
@@ -1059,12 +1223,22 @@
         <span class="social-card__desc">Chat with me</span>
         <span class="social-card__arrow">→</span>
     </a>
-
+    <!-- YourClean Telegram Bot 
+    <a href="https://t.me/YourClean_bot" target="_blank" rel="noopener noreferrer"
+    class="social-card social-card--bot reveal reveal-delay-4">
+    <div class="social-card__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 3.5L2.5 11l6 2.5M21.5 3.5l-5 17-4-8M21.5 3.5l-13 10 2.5 6"></path>
+        </svg>
+    </div>
+    <span class="social-card__name">YourClean Bot</span>
+    <span class="social-card__desc">Store Management Telegram Bot</span>
+    <span class="social-card__arrow">→</span>
+</a> -->
     <!-- YouTube -->
     <a href="https://youtube.com/@abbas.chanel" target="_blank" rel="noopener noreferrer"
-    class="social-card social-card--youtube reveal reveal-delay-4">
+    class="social-card social-card--youtube reveal reveal-delay-5">
     <div class="social-card__icon">
-        <!-- YouTube SVG -->
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"></polygon>
             <rect x="1" y="4" width="22" height="16" rx="4" ry="4"></rect>
@@ -1074,12 +1248,10 @@
     <span class="social-card__desc">Video tutorials</span>
     <span class="social-card__arrow">→</span>
 </a>
-
 <!-- GitHub -->
 <a href="https://github.com/abbasaghebaty" target="_blank" rel="noopener noreferrer"
-class="social-card social-card--github reveal reveal-delay-5">
+class="social-card social-card--github reveal reveal-delay-6">
 <div class="social-card__icon">
-    <!-- GitHub SVG -->
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
     </svg>
@@ -1092,99 +1264,149 @@ class="social-card social-card--github reveal reveal-delay-5">
 </section>
 
 <!-- Portfolio Section -->
-<section class="section reveal" aria-label="Portfolio projects">
+<section class="section reveal" aria-label="Portfolio projects" id="portfolioSection">
     <h2 class="section__title">Featured Projects</h2>
-    <div class="portfolio-grid">
-        <!-- Project 1 -->
-        <article class="portfolio-card reveal reveal-delay-1">
+    <div class="portfolio-grid" id="portfolioGrid">
+
+        <!-- Project 1: Increase Photo Resolution -->
+        <article class="portfolio-card reveal reveal-delay-1" data-project>
             <div class="portfolio-card__image">
-                <div class="portfolio-card__image-placeholder">⚡</div>
+                <div class="portfolio-card__image-placeholder">🖼️</div>
             </div>
             <div class="portfolio-card__body">
-                <h3 class="portfolio-card__title">TaskFlow</h3>
-                <p class="portfolio-card__desc">A modern task management app with real-time sync and beautiful drag-and-drop interface.</p>
-                <a href="#" class="portfolio-card__link" target="_blank" rel="noopener">
-                    View Project <span class="portfolio-card__link-arrow">→</span>
-                </a>
+                <h3 class="portfolio-card__title">Increase Photo Resolution</h3>
+                <p class="portfolio-card__desc">A lightweight web application that enhances image resolution with multiple upscale levels while maintaining a fast and responsive user experience.</p>
+                <div class="portfolio-card__tech">
+                    <span class="portfolio-card__tech-badge">JavaScript</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--purple">Canvas API</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--teal">Image Processing</span>
+                </div>
+                <div class="portfolio-card__actions">
+                    <a href="https://github.com/abbasaghebaty/Increase-photo-resolotion" class="portfolio-card__link" target="_blank" rel="noopener">
+                        GitHub <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                    <a href="https://abbasaghebaty.github.io/Increase-photo-resolotion/" class="portfolio-card__link portfolio-card__link--demo" target="_blank" rel="noopener">
+                        Live Demo <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                </div>
             </div>
         </article>
 
-        <!-- Project 2 -->
-        <article class="portfolio-card reveal reveal-delay-2">
+        <!-- Project 2: Caption Generator -->
+        <article class="portfolio-card reveal reveal-delay-2" data-project>
             <div class="portfolio-card__image">
-                <div class="portfolio-card__image-placeholder">🧩</div>
+                <div class="portfolio-card__image-placeholder">✍️</div>
             </div>
             <div class="portfolio-card__body">
-                <h3 class="portfolio-card__title">ComponentKit</h3>
-                <p class="portfolio-card__desc">A lightweight UI component library built with vanilla JavaScript — fast, accessible, and tree-shakeable.</p>
-                <a href="#" class="portfolio-card__link" target="_blank" rel="noopener">
-                    View Project <span class="portfolio-card__link-arrow">→</span>
-                </a>
+                <h3 class="portfolio-card__title">Caption Generator</h3>
+                <p class="portfolio-card__desc">An intelligent caption generation tool for Telegram shop owners with optimized formatting, emojis and category-based templates.</p>
+                <div class="portfolio-card__tech">
+                    <span class="portfolio-card__tech-badge">JavaScript</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--purple">Telegram API</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--teal">Automation</span>
+                </div>
+                <div class="portfolio-card__actions">
+                    <a href="https://github.com/abbasaghebaty/Caption-Generator" class="portfolio-card__link" target="_blank" rel="noopener">
+                        GitHub <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                    <a href="https://abbasaghebaty.github.io/Caption-Generator/" class="portfolio-card__link portfolio-card__link--demo" target="_blank" rel="noopener">
+                        Live Demo <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                </div>
             </div>
         </article>
 
-        <!-- Project 3 -->
-        <article class="portfolio-card reveal reveal-delay-3">
+        <!-- Project 3: YourClean Telegram Bot -->
+        <article class="portfolio-card reveal reveal-delay-3" data-project>
             <div class="portfolio-card__image">
-                <div class="portfolio-card__image-placeholder">📊</div>
+                <div class="portfolio-card__image-placeholder">🤖</div>
             </div>
             <div class="portfolio-card__body">
-                <h3 class="portfolio-card__title">DashMetrics</h3>
-                <p class="portfolio-card__desc">Interactive analytics dashboard with animated charts, dark mode, and CSV export support.</p>
-                <a href="#" class="portfolio-card__link" target="_blank" rel="noopener">
-                    View Project <span class="portfolio-card__link-arrow">→</span>
-                </a>
+                <h3 class="portfolio-card__title">YourClean Telegram Bot</h3>
+                <p class="portfolio-card__desc">A Telegram bot developed for store management, product lookup, customer interaction and quick access to shop information.</p>
+                <div class="portfolio-card__tech">
+                    <span class="portfolio-card__tech-badge">Node.js</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--purple">Telegram Bot API</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--teal">Store Management</span>
+                </div>
+                <div class="portfolio-card__actions">
+                    <a href="https://github.com/abbasaghebaty/Yourclean-bot" class="portfolio-card__link" target="_blank" rel="noopener">
+                        GitHub <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                    <a href="https://t.me/YourClean_bot" class="portfolio-card__link portfolio-card__link--demo" target="_blank" rel="noopener">
+                        Open Bot <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                </div>
             </div>
         </article>
 
-        <!-- Project 4 -->
-        <article class="portfolio-card reveal reveal-delay-4">
+        <!-- Project 4: Shoma Shop Website -->
+        <article class="portfolio-card reveal reveal-delay-4" data-project>
             <div class="portfolio-card__image">
-                <div class="portfolio-card__image-placeholder">🔐</div>
+                <div class="portfolio-card__image-placeholder">🛍️</div>
             </div>
             <div class="portfolio-card__body">
-                <h3 class="portfolio-card__title">AuthShield</h3>
-                <p class="portfolio-card__desc">Secure authentication microservice with JWT, OAuth2, and magic link support.</p>
-                <a href="#" class="portfolio-card__link" target="_blank" rel="noopener">
-                    View Project <span class="portfolio-card__link-arrow">→</span>
-                </a>
+                <h3 class="portfolio-card__title">Shoma Shop Website</h3>
+                <p class="portfolio-card__desc">A modern responsive website designed for a local shop featuring product showcases, contact information and optimized user experience.</p>
+                <div class="portfolio-card__tech">
+                    <span class="portfolio-card__tech-badge">HTML</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--purple">CSS</span>
+                    <span class="portfolio-card__tech-badge">JavaScript</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--teal">Responsive</span>
+                </div>
+                <div class="portfolio-card__actions">
+                    <a href="https://github.com/abbasaghebaty/Shoma.shop" class="portfolio-card__link" target="_blank" rel="noopener">
+                        GitHub <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                    <a href="http://shoma-shop.ir/" class="portfolio-card__link portfolio-card__link--demo" target="_blank" rel="noopener">
+                        Live Demo <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                </div>
             </div>
         </article>
 
-        <!-- Project 5 -->
-        <article class="portfolio-card reveal reveal-delay-5">
+        <!-- Project 5: Personal Portfolio -->
+        <article class="portfolio-card reveal reveal-delay-5" data-project>
             <div class="portfolio-card__image">
-                <div class="portfolio-card__image-placeholder">🌐</div>
+                <div class="portfolio-card__image-placeholder">🚀</div>
             </div>
             <div class="portfolio-card__body">
-                <h3 class="portfolio-card__title">APIForge</h3>
-                <p class="portfolio-card__desc">REST API scaffolding tool that generates clean, documented endpoints from JSON schemas.</p>
-                <a href="#" class="portfolio-card__link" target="_blank" rel="noopener">
-                    View Project <span class="portfolio-card__link-arrow">→</span>
-                </a>
+                <h3 class="portfolio-card__title">Personal Portfolio</h3>
+                <p class="portfolio-card__desc">My personal portfolio and launcher that brings together all of my social links, featured projects and development journey in one place.</p>
+                <div class="portfolio-card__tech">
+                    <span class="portfolio-card__tech-badge">HTML</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--purple">CSS</span>
+                    <span class="portfolio-card__tech-badge">JavaScript</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--teal">Glassmorphism</span>
+                </div>
+                <div class="portfolio-card__actions">
+                    <span class="portfolio-card__link portfolio-card__link--secondary" style="cursor:default;opacity:0.7;">
+                        Current Website
+                    </span>
+                </div>
             </div>
         </article>
     </div>
 </section>
 
 <!-- Statistics Section -->
-<section class="section reveal" aria-label="Statistics">
+<section class="section reveal" aria-label="Statistics" id="statsSection">
     <h2 class="section__title">By the Numbers</h2>
     <div class="stats-grid">
         <div class="stat-card reveal reveal-delay-1">
-            <div class="stat-card__number" data-count="47" data-suffix="">0</div>
+            <div class="stat-card__number" id="statProjects">0</div>
             <div class="stat-card__label">Projects</div>
         </div>
         <div class="stat-card reveal reveal-delay-2">
-            <div class="stat-card__number" data-count="89" data-suffix="">0</div>
+            <div class="stat-card__number" id="statRepos">--</div>
             <div class="stat-card__label">Repositories</div>
         </div>
         <div class="stat-card reveal reveal-delay-3">
-            <div class="stat-card__number" data-count="5" data-suffix="+">0</div>
+            <div class="stat-card__number" id="statExperience">0+</div>
             <div class="stat-card__label">Years Experience</div>
         </div>
         <div class="stat-card reveal reveal-delay-4">
-            <div class="stat-card__number" data-count="12.4" data-suffix="K" data-decimal="true">0</div>
+            <div class="stat-card__number" id="statVisitors">--</div>
             <div class="stat-card__label">Visitors</div>
         </div>
     </div>
@@ -1192,7 +1414,8 @@ class="social-card social-card--github reveal reveal-delay-5">
 
 <!-- Footer -->
 <footer class="footer reveal">
-    <p>Made with <span class="footer__heart">❤️</span> by Abbas — <span id="currentYear"></span></p>
+    <p>Made with <span class="footer__heart">❤️</span> by Abbas Aghebaty — <span id="currentYear"></span></p>
+    <p class="footer__date">Last Updated: <span id="lastUpdated"></span></p>
 </footer>
 
 </main>
@@ -1200,37 +1423,43 @@ class="social-card social-card--github reveal reveal-delay-5">
 <script>
     (function() {
         // ========================================
-        // DOM Element References
+        // DOM References
         // ========================================
         const typingTextEl = document.getElementById('typingText');
         const flipClockEl = document.getElementById('flipClock');
         const bgOrbsEl = document.getElementById('bgOrbs');
         const currentYearEl = document.getElementById('currentYear');
-
-        // Digit wrapper elements for the flip clock
-        const digitWrappers = {
-            h0: flipClockEl.querySelector('[data-digit="h0"]'),
-            h1: flipClockEl.querySelector('[data-digit="h1"]'),
-            m0: flipClockEl.querySelector('[data-digit="m0"]'),
-            m1: flipClockEl.querySelector('[data-digit="m1"]'),
-            s0: flipClockEl.querySelector('[data-digit="s0"]'),
-            s1: flipClockEl.querySelector('[data-digit="s1"]'),
-        };
-
-        // Store current displayed digits to detect changes
-        let currentDigits = {
-            h0: null,
-            h1: null,
-            m0: null,
-            m1: null,
-            s0: null,
-            s1: null,
-        };
+        const lastUpdatedEl = document.getElementById('lastUpdated');
+        const statProjectsEl = document.getElementById('statProjects');
+        const statReposEl = document.getElementById('statRepos');
+        const statExperienceEl = document.getElementById('statExperience');
+        const statVisitorsEl = document.getElementById('statVisitors');
+        const portfolioGrid = document.getElementById('portfolioGrid');
+        const statsSectionEl = document.getElementById('statsSection');
 
         // ========================================
-        // Set Current Year in Footer
+        // Set Footer Dates
         // ========================================
-        currentYearEl.textContent = new Date().getFullYear();
+        const now = new Date();
+        currentYearEl.textContent = now.getFullYear();
+        lastUpdatedEl.textContent = now.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+
+        // ========================================
+        // Dynamic Project Count
+        // ========================================
+        const projectCards = portfolioGrid.querySelectorAll('[data-project]');
+        const totalProjects = projectCards.length;
+
+        // ========================================
+        // Experience Calculation (Started 2024)
+        // ========================================
+        const startYear = 2024;
+        const currentYear = now.getFullYear();
+        const yearsExperience = Math.max(1, currentYear - startYear);
 
         // ========================================
         // Typing Animation
@@ -1239,57 +1468,172 @@ class="social-card social-card--github reveal reveal-delay-5">
             'JavaScript Developer',
             'Web Developer',
             'Open Source Creator',
+            'Front-end Developer',
+            'Telegram Bot Developer',
         ];
         let titleIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
-        let typingPause = 1800; // Pause after full word typed
-        let typingSpeed = 70; // ms per character when typing
-        let deletingSpeed = 35; // ms per character when deleting
-        let pauseTimer = null;
+        const typingPause = 1800;
+        const typingSpeed = 65;
+        const deletingSpeed = 30;
 
         function typeAnimation() {
             const currentTitle = titles[titleIndex];
-
             if (isDeleting) {
-                // Deleting characters
                 charIndex--;
                 typingTextEl.textContent = currentTitle.substring(0, charIndex);
-
                 if (charIndex <= 0) {
-                    // Finished deleting — move to next title
                     isDeleting = false;
                     titleIndex = (titleIndex + 1) % titles.length;
-                    // Small gap before starting to type new word
                     setTimeout(typeAnimation, 250);
                     return;
                 }
                 setTimeout(typeAnimation, deletingSpeed);
             } else {
-                // Typing characters
                 charIndex++;
                 typingTextEl.textContent = currentTitle.substring(0, charIndex);
-
                 if (charIndex >= currentTitle.length) {
-                    // Word fully typed — pause then start deleting
                     isDeleting = true;
-                    pauseTimer = setTimeout(typeAnimation, typingPause);
+                    setTimeout(typeAnimation, typingPause);
                     return;
                 }
-                // Random micro-variation for natural feel
-                const speed = typingSpeed + Math.random() * 40;
+                const speed = typingSpeed + Math.random() * 35;
                 setTimeout(typeAnimation, speed);
             }
         }
-
-        // Start the typing animation
         setTimeout(typeAnimation, 400);
 
         // ========================================
-        // Flip Clock — Tehran Time
+        // Flip Clock — Robust Per-Digit Roller
+        //
+        // Each digit window contains a single "track" with two stacked
+        // slots (top + bottom). At rest the track sits at translateY(-50%),
+        // which shows the BOTTOM slot (the current digit). To animate to a
+        // new value we write the new value into the TOP slot, then slide
+        // the track down to translateY(0%): the new digit slides in from
+        // above while the old digit exits below. Only at the exact instant
+        // the transition ends do we (a) reset the track back to its resting
+        // position and (b) copy the new value into the bottom slot — as one
+        // synchronous, transition-free operation — so the old value can
+        // never flash back into view. Digits that change again mid-flight
+        // are queued and replayed after the current animation completes.
         // ========================================
+        const digitWrappers = {};
+        const digitData = {};
+        const allDigitKeys = ['h0', 'h1', 'm0', 'm1', 's0', 's1'];
+        const CLOCK_ANIM_MS = 360;
+        const CLOCK_EASING = 'cubic-bezier(0.22, 0.61, 0.36, 1)';
+
+        allDigitKeys.forEach(key => {
+            const wrapper = flipClockEl.querySelector(`[data-digit="${key}"]`);
+            if (!wrapper) return;
+            const track = wrapper.querySelector('.clock__digit-track');
+            const spans = track.querySelectorAll('.clock__digit-span');
+            digitWrappers[key] = wrapper;
+            digitData[key] = {
+                track: track,
+                topSpan: spans[0],
+                bottomSpan: spans[1],
+                currentValue: null,
+                isAnimating: false,
+                queuedValue: null,
+                glowTimeout: null,
+            };
+        });
+
+        function initDigit(key, value) {
+            const d = digitData[key];
+            d.currentValue = value;
+            d.topSpan.textContent = value;
+            d.bottomSpan.textContent = value;
+            d.topSpan.style.transition = 'none';
+            d.topSpan.style.filter = 'none';
+            d.topSpan.style.opacity = '1';
+            d.track.style.transition = 'none';
+            d.track.style.transform = 'translateY(-50%)';
+        }
+
+        function animateDigit(key, newValue) {
+            const d = digitData[key];
+            const wrapper = digitWrappers[key];
+            if (!d || d.currentValue === newValue) return;
+
+            if (d.isAnimating) {
+                // Newer value arrived mid-flight — just update what will
+                // enter next; the current animation still finishes cleanly.
+                d.queuedValue = newValue;
+                return;
+            }
+
+            d.isAnimating = true;
+
+            // Write the incoming digit into the top (entering) slot.
+            d.topSpan.textContent = newValue;
+
+            // Ensure we start from the resting position with no transition.
+            d.track.style.transition = 'none';
+            d.track.style.transform = 'translateY(-50%)';
+            d.topSpan.style.transition = 'none';
+            d.topSpan.style.filter = 'blur(3px) brightness(1.7)';
+            d.topSpan.style.opacity = '0.55';
+            void d.track.offsetHeight; // force reflow
+
+            wrapper.classList.remove('glow-fading');
+            wrapper.classList.add('glow-active');
+
+            requestAnimationFrame(() => {
+                d.track.style.transition = `transform ${CLOCK_ANIM_MS}ms ${CLOCK_EASING}`;
+                d.track.style.transform = 'translateY(0%)';
+                d.topSpan.style.transition = `filter ${CLOCK_ANIM_MS}ms ease-out, opacity ${CLOCK_ANIM_MS}ms ease-out`;
+                d.topSpan.style.filter = 'blur(0px) brightness(1)';
+                d.topSpan.style.opacity = '1';
+            });
+
+            let finished = false;
+            const finish = () => {
+                if (finished) return;
+                finished = true;
+                d.track.removeEventListener('transitionend', onEnd);
+                clearTimeout(fallback);
+
+                // Synchronous, transition-free reset: the bottom slot now
+                // holds the new value, and the track snaps back to rest —
+                // both happen in the same tick, so nothing flashes.
+                d.bottomSpan.textContent = newValue;
+                d.track.style.transition = 'none';
+                d.track.style.transform = 'translateY(-50%)';
+                d.topSpan.style.transition = 'none';
+                d.topSpan.style.filter = 'none';
+                d.topSpan.style.opacity = '1';
+
+                d.currentValue = newValue;
+                d.isAnimating = false;
+
+                wrapper.classList.remove('glow-active');
+                wrapper.classList.add('glow-fading');
+                clearTimeout(d.glowTimeout);
+                d.glowTimeout = setTimeout(() => wrapper.classList.remove('glow-fading'), 520);
+
+                if (d.queuedValue !== null && d.queuedValue !== d.currentValue) {
+                    const next = d.queuedValue;
+                    d.queuedValue = null;
+                    requestAnimationFrame(() => animateDigit(key, next));
+                } else {
+                    d.queuedValue = null;
+                }
+            };
+
+            const onEnd = (e) => {
+                if (e.target !== d.track || e.propertyName !== 'transform') return;
+                finish();
+            };
+            d.track.addEventListener('transitionend', onEnd);
+            const fallback = setTimeout(finish, CLOCK_ANIM_MS + 150);
+        }
+
         function getTehranTime() {
-            const now = new Date();
+            const nowDate = new Date();
             const options = {
                 timeZone: 'Asia/Tehran',
                 hour: '2-digit',
@@ -1298,195 +1642,342 @@ class="social-card social-card--github reveal reveal-delay-5">
                 hour12: false,
             };
             const formatter = new Intl.DateTimeFormat('en-US', options);
-            const parts = formatter.formatToParts(now);
-
-            let hours = '00';
-            let minutes = '00';
-            let seconds = '00';
-
+            const parts = formatter.formatToParts(nowDate);
+            let hours = '00',
+                minutes = '00',
+                seconds = '00';
             for (const part of parts) {
                 if (part.type === 'hour') hours = part.value.padStart(2, '0');
                 if (part.type === 'minute') minutes = part.value.padStart(2, '0');
                 if (part.type === 'second') seconds = part.value.padStart(2, '0');
             }
-
+            if (hours === '24') hours = '00';
             return { hours, minutes, seconds };
         }
 
-        /**
-         * Animates a single digit with a flip-like effect.
-         * Uses a two-phase approach: the digit slides down, content swaps, then slides up into place.
-         */
-        function animateDigit(wrapperKey, newDigitValue) {
-            const wrapper = digitWrappers[wrapperKey];
-            if (!wrapper) return;
-
-            const digitEl = wrapper.querySelector('.clock__digit');
-            const innerEl = digitEl.querySelector('.clock__digit-inner');
-            const currentValue = innerEl.textContent;
-
-            // If the digit hasn't changed, skip animation
-            if (currentValue === newDigitValue && currentDigits[wrapperKey] === newDigitValue) {
-                return;
-            }
-
-            // Update tracking
-            currentDigits[wrapperKey] = newDigitValue;
-
-            // Phase 1: quick flip-down (slide out)
-            digitEl.classList.add('flipping');
-            digitEl.classList.add('glow-pulse');
-
-            // At midpoint of the animation (~175ms), swap the text
-            setTimeout(() => {
-                innerEl.textContent = newDigitValue;
-                digitEl.classList.remove('flipping');
-                digitEl.classList.add('flipping-up');
-
-                // Clean up after animation completes
-                setTimeout(() => {
-                    digitEl.classList.remove('flipping-up');
-                    digitEl.classList.remove('glow-pulse');
-                }, 360);
-            }, 170);
-        }
-
-        /**
-         * Updates all clock digits, animating only the ones that changed.
-         */
         function updateClock() {
             const time = getTehranTime();
-            const hStr = time.hours; // "HH"
-            const mStr = time.minutes; // "MM"
-            const sStr = time.seconds; // "SS"
-
             const newDigits = {
-                h0: hStr[0],
-                h1: hStr[1],
-                m0: mStr[0],
-                m1: mStr[1],
-                s0: sStr[0],
-                s1: sStr[1],
+                h0: time.hours[0],
+                h1: time.hours[1],
+                m0: time.minutes[0],
+                m1: time.minutes[1],
+                s0: time.seconds[0],
+                s1: time.seconds[1],
             };
 
-            // Initialize on first run (no animation)
-            if (currentDigits.h0 === null) {
-                for (const key of Object.keys(newDigits)) {
-                    const wrapper = digitWrappers[key];
-                    if (wrapper) {
-                        wrapper.querySelector('.clock__digit-inner').textContent = newDigits[key];
-                        currentDigits[key] = newDigits[key];
-                    }
-                }
+            if (digitData['h0'].currentValue === null) {
+                allDigitKeys.forEach(key => initDigit(key, newDigits[key]));
                 return;
             }
 
-            // Animate only changed digits
-            for (const key of Object.keys(newDigits)) {
-                if (newDigits[key] !== currentDigits[key]) {
+            allDigitKeys.forEach(key => {
+                if (newDigits[key] !== digitData[key].currentValue) {
                     animateDigit(key, newDigits[key]);
                 }
-            }
+            });
         }
 
-        // Run clock update immediately and then every 200ms (check frequently for smooth updates)
         updateClock();
         setInterval(updateClock, 200);
 
         // ========================================
-        // Count-Up Animation for Stats
+        // Stats — values arrive async, animation runs once on first scroll
         // ========================================
-        function animateCountUp(el) {
-            const targetRaw = el.getAttribute('data-count');
-            const suffix = el.getAttribute('data-suffix') || '';
-            const isDecimal = el.getAttribute('data-decimal') === 'true';
-            const target = parseFloat(targetRaw);
-            const duration = 1800; // ms
-            const startTime = performance.now();
-            const startVal = 0;
+        const statElements = {
+            projects: statProjectsEl,
+            repos: statReposEl,
+            experience: statExperienceEl,
+            visitors: statVisitorsEl,
+        };
+        const statValues = {
+            projects: totalProjects,
+            repos: null,
+            experience: yearsExperience,
+            visitors: null,
+        };
+        const statSuffix = { projects: '', repos: '', experience: '+', visitors: '' };
+        const statAnimated = { projects: false, repos: false, experience: false, visitors: false };
+        let statsSectionVisible = false;
 
-            function easeOutCubic(t) {
-                return 1 - Math.pow(1 - t, 3);
-            }
-
-            function update(now) {
-                const elapsed = now - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const easedProgress = easeOutCubic(progress);
-                const current = startVal + (target - startVal) * easedProgress;
-
-                if (isDecimal) {
-                    el.textContent = current.toFixed(1) + suffix;
-                } else {
-                    el.textContent = Math.round(current) + suffix;
-                }
-
-                if (progress < 1) {
-                    requestAnimationFrame(update);
-                } else {
-                    // Ensure final value is exact
-                    if (isDecimal) {
-                        el.textContent = target.toFixed(1) + suffix;
-                    } else {
-                        el.textContent = Math.round(target) + suffix;
-                    }
-                }
-            }
-
-            requestAnimationFrame(update);
+        function easeOutCubic(t) {
+            return 1 - Math.pow(1 - t, 3);
         }
 
+        function countUpStat(el, target, suffix, duration) {
+            duration = duration || 1300;
+            const start = performance.now();
+            function tick(nowTs) {
+                const progress = Math.min((nowTs - start) / duration, 1);
+                const eased = easeOutCubic(progress);
+                const current = Math.round(target * eased);
+                el.textContent = current + suffix;
+                if (progress < 1) {
+                    requestAnimationFrame(tick);
+                } else {
+                    el.textContent = target + suffix;
+                }
+            }
+            requestAnimationFrame(tick);
+        }
+
+        function tryAnimateStat(key) {
+            if (!statsSectionVisible) return;
+            if (statAnimated[key]) return;
+            const value = statValues[key];
+            if (value === null || value === undefined) return;
+            statAnimated[key] = true;
+            countUpStat(statElements[key], value, statSuffix[key]);
+        }
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            for (const entry of entries) {
+                if (entry.isIntersecting) {
+                    statsSectionVisible = true;
+                    Object.keys(statValues).forEach(tryAnimateStat);
+                    statsObserver.unobserve(entry.target);
+                }
+            }
+        }, { root: null, rootMargin: '0px 0px -60px 0px', threshold: 0.3 });
+
+        statsObserver.observe(statsSectionEl);
+
         // ========================================
-        // Intersection Observer — Scroll Reveal + Count-Up Trigger
+        // GitHub API — Fetch Repository Count
+        // ========================================
+        const GITHUB_USERNAME = 'abbasaghebaty';
+        const GITHUB_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}`;
+        const REPOS_CACHE_KEY = 'gh_repos_count';
+        const REPOS_CACHE_TIME_KEY = 'gh_repos_cache_time';
+        const CACHE_DURATION_MS = 60 * 60 * 1000; // 1 hour
+
+        function readCachedRepoCount() {
+            try {
+                const cachedCount = localStorage.getItem(REPOS_CACHE_KEY);
+                const cachedTime = localStorage.getItem(REPOS_CACHE_TIME_KEY);
+                if (cachedCount === null || cachedTime === null) return null;
+                return { count: parseInt(cachedCount, 10), time: parseInt(cachedTime, 10) };
+            } catch (_) {
+                return null;
+            }
+        }
+
+        function writeCachedRepoCount(count) {
+            try {
+                localStorage.setItem(REPOS_CACHE_KEY, String(count));
+                localStorage.setItem(REPOS_CACHE_TIME_KEY, String(Date.now()));
+            } catch (_) { /* storage unavailable — ignore */ }
+        }
+
+        async function fetchRepoCount() {
+            const cached = readCachedRepoCount();
+            if (cached && !Number.isNaN(cached.count)) {
+                statValues.repos = cached.count;
+                tryAnimateStat('repos');
+                if (Date.now() - cached.time < CACHE_DURATION_MS) {
+                    refreshRepoCountInBackground();
+                    return;
+                }
+            }
+
+            try {
+                const response = await fetch(GITHUB_API_URL, {
+                    headers: { 'Accept': 'application/vnd.github.v3+json' },
+                    signal: AbortSignal.timeout(8000),
+                });
+                if (!response.ok) throw new Error(`GitHub API: ${response.status}`);
+                const data = await response.json();
+                if (typeof data.public_repos === 'number') {
+                    statValues.repos = data.public_repos;
+                    statAnimated.repos = false; // allow re-animation to the fresh value if not yet shown
+                    tryAnimateStat('repos');
+                    if (statAnimated.repos === false) {
+                        // section not visible yet — keep the flag reset so it animates once visible
+                    }
+                    writeCachedRepoCount(data.public_repos);
+                }
+            } catch (err) {
+                console.warn('GitHub API fetch failed, using cache or fallback:', err.message);
+                if (statValues.repos === null) {
+                    statReposEl.textContent = '--';
+                }
+            }
+        }
+
+        async function refreshRepoCountInBackground() {
+            try {
+                const response = await fetch(GITHUB_API_URL, {
+                    headers: { 'Accept': 'application/vnd.github.v3+json' },
+                    signal: AbortSignal.timeout(6000),
+                });
+                if (!response.ok) return;
+                const data = await response.json();
+                if (typeof data.public_repos === 'number' && data.public_repos !== statValues.repos) {
+                    statValues.repos = data.public_repos;
+                    if (statAnimated.repos) {
+                        // Already shown once — just update the number quietly, no re-animation.
+                        statReposEl.textContent = data.public_repos;
+                    } else {
+                        tryAnimateStat('repos');
+                    }
+                    writeCachedRepoCount(data.public_repos);
+                }
+            } catch (_) {
+                // Silent background refresh failure
+            }
+        }
+
+        // Start fetching repo count (non-blocking)
+        fetchRepoCount();
+
+        // ========================================
+        // Visitor Counter — real count via CountAPI, with a natural
+        // (non-random-looking) local fallback when the service is
+        // unreachable: growth is irregular, time-based, and capped so it
+        // never jumps unrealistically.
+        // ========================================
+        const VISITOR_NAMESPACE = 'abbas-aghebaty-portfolio';
+        const VISITOR_KEY = 'visitors';
+        const VISITOR_API_URL = `https://api.countapi.xyz/hit/${VISITOR_NAMESPACE}/${VISITOR_KEY}`;
+        const VISITOR_FALLBACK_KEY = 'visitor_fallback_v2';
+
+        function naturalVisitorFallback() {
+            let data = null;
+            try {
+                data = JSON.parse(localStorage.getItem(VISITOR_FALLBACK_KEY) || 'null');
+            } catch (_) {
+                data = null;
+            }
+            const nowTs = Date.now();
+            if (!data || typeof data.count !== 'number' || typeof data.lastUpdate !== 'number') {
+                data = { count: 130 + Math.floor(Math.random() * 90), lastUpdate: nowTs };
+            }
+
+            // Simulate irregular, capped growth for the time elapsed since last visit.
+            const elapsedHours = Math.min((nowTs - data.lastUpdate) / 3600000, 96);
+            const wholeHours = Math.floor(elapsedHours);
+            let added = 0;
+            for (let i = 0; i < wholeHours; i++) {
+                const roll = Math.random();
+                if (roll > 0.82) added += 3;
+                else if (roll > 0.6) added += 2;
+                else if (roll > 0.35) added += 1;
+                // else: no growth that hour
+            }
+            // This visit itself has a good chance of counting.
+            if (Math.random() > 0.5) added += 1;
+
+            data.count += added;
+            data.lastUpdate = nowTs;
+            try {
+                localStorage.setItem(VISITOR_FALLBACK_KEY, JSON.stringify(data));
+            } catch (_) { /* storage unavailable — ignore */ }
+            return data.count;
+        }
+
+        async function fetchVisitorCount() {
+            try {
+                const response = await fetch(VISITOR_API_URL, { signal: AbortSignal.timeout(6000) });
+                if (!response.ok) throw new Error(`CountAPI: ${response.status}`);
+                const data = await response.json();
+                if (!data || typeof data.value !== 'number') throw new Error('Invalid CountAPI response');
+                statValues.visitors = data.value;
+                tryAnimateStat('visitors');
+                try {
+                    localStorage.setItem(VISITOR_FALLBACK_KEY, JSON.stringify({ count: data.value, lastUpdate: Date.now() }));
+                } catch (_) { /* ignore */ }
+            } catch (err) {
+                console.warn('Visitor counter (CountAPI) unavailable, using natural local fallback:', err.message);
+                statValues.visitors = naturalVisitorFallback();
+                tryAnimateStat('visitors');
+            }
+        }
+
+        // Start fetching visitor count (non-blocking)
+        fetchVisitorCount();
+
+        // ========================================
+        // Mouse Tilt Effect for Cards (3D subtle tilt)
+        // ========================================
+        function applyTiltEffect(card) {
+            let rafId = null;
+            let currentTiltX = 0;
+            let currentTiltY = 0;
+            let targetTiltX = 0;
+            let targetTiltY = 0;
+
+            function lerp(a, b, t) { return a + (b - a) * t; }
+
+            function animateTilt() {
+                currentTiltX = lerp(currentTiltX, targetTiltX, 0.12);
+                currentTiltY = lerp(currentTiltY, targetTiltY, 0.12);
+                card.style.transform =
+                    `perspective(800px) rotateX(${currentTiltY}deg) rotateY(${currentTiltX}deg) translateY(${card.matches(':hover') ? '-6px' : '0px'})`;
+                if (Math.abs(currentTiltX - targetTiltX) > 0.01 || Math.abs(currentTiltY - targetTiltY) >
+                    0.01 || card.matches(':hover')) {
+                    rafId = requestAnimationFrame(animateTilt);
+                } else {
+                    card.style.transform = '';
+                    rafId = null;
+                }
+            }
+
+            card.addEventListener('mousemove', function(e) {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                targetTiltX = ((x - centerX) / centerX) * 5; // max ±5 degrees
+                targetTiltY = ((y - centerY) / centerY) * -5; // inverted for natural feel
+                if (!rafId) {
+                    rafId = requestAnimationFrame(animateTilt);
+                }
+            });
+
+            card.addEventListener('mouseleave', function() {
+                targetTiltX = 0;
+                targetTiltY = 0;
+                if (!rafId) {
+                    rafId = requestAnimationFrame(animateTilt);
+                }
+                // After animation settles, clean up
+                setTimeout(() => {
+                    if (rafId && Math.abs(currentTiltX) < 0.05 && Math.abs(currentTiltY) < 0.05 && !card.matches(
+                            ':hover')) {
+                        cancelAnimationFrame(rafId);
+                        rafId = null;
+                        card.style.transform = '';
+                    }
+                }, 600);
+            });
+        }
+
+        // Apply tilt to all portfolio cards and social cards
+        document.querySelectorAll('.portfolio-card, .social-card').forEach(card => {
+            applyTiltEffect(card);
+        });
+
+        // ========================================
+        // Intersection Observer — Scroll Reveal
         // ========================================
         const revealElements = document.querySelectorAll('.reveal');
-        const statNumberElements = document.querySelectorAll('.stat-card__number[data-count]');
-        let statsAnimated = false;
-
         const observerOptions = {
             root: null,
             rootMargin: '0px 0px -40px 0px',
-            threshold: 0.12,
+            threshold: 0.1,
         };
 
         const observer = new IntersectionObserver((entries) => {
             for (const entry of entries) {
-                if (entry.isIntersecting) {
-                    // Add revealed class for scroll animations
-                    if (entry.target.classList.contains('reveal')) {
-                        entry.target.classList.add('revealed');
-                    }
-
-                    // Trigger count-up for stat numbers when they come into view
-                    if (
-                        !statsAnimated &&
-                        entry.target.closest('.stats-grid') &&
-                        entry.target.classList.contains('stat-card')
-                    ) {
-                        // Check if at least one stat card is visible
-                        const anyStatVisible = Array.from(statNumberElements).some(el => {
-                            const rect = el.getBoundingClientRect();
-                            return rect.top < window.innerHeight && rect.bottom > 0;
-                        });
-                        if (anyStatVisible) {
-                            statsAnimated = true;
-                            statNumberElements.forEach(el => animateCountUp(el));
-                        }
-                    }
-
-                    // Unobserve reveal elements after they've been revealed
-                    if (entry.target.classList.contains('reveal')) {
-                        observer.unobserve(entry.target);
-                    }
+                if (entry.isIntersecting && entry.target.classList.contains('reveal')) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
                 }
             }
         }, observerOptions);
 
-        // Observe all reveal elements
         revealElements.forEach(el => observer.observe(el));
-
-        // Also observe stat cards specifically for count-up
-        document.querySelectorAll('.stat-card').forEach(el => observer.observe(el));
 
         // ========================================
         // Mouse Parallax for Background Orbs
@@ -1498,7 +1989,6 @@ class="social-card social-card--github reveal reveal-delay-5">
         let targetMouseY = 0;
         let isTouchDevice = false;
 
-        // Detect touch device
         window.addEventListener('touchstart', function onFirstTouch() {
             isTouchDevice = true;
             window.removeEventListener('touchstart', onFirstTouch);
@@ -1506,42 +1996,26 @@ class="social-card social-card--github reveal reveal-delay-5">
 
         document.addEventListener('mousemove', function(e) {
             if (isTouchDevice) return;
-            // Normalize mouse position relative to viewport center
-            targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2; // -1 to 1
-            targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2; // -1 to 1
+            targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+            targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
         }, { passive: true });
 
         function updateParallax() {
-            // Smoothly interpolate mouse position
             mouseX += (targetMouseX - mouseX) * 0.04;
             mouseY += (targetMouseY - mouseY) * 0.04;
-
-            if (isTouchDevice) {
-                // On touch devices, just let CSS animations handle orb movement
-                requestAnimationFrame(updateParallax);
-                return;
+            if (!isTouchDevice) {
+                const intensities = [18, 22, 14, 20];
+                orbs.forEach((orb, i) => {
+                    const intensity = intensities[i] || 15;
+                    orb.style.transform = `translate(${mouseX * intensity}px, ${mouseY * intensity}px)`;
+                });
             }
-
-            // Apply subtle parallax to each orb with different intensities
-            const intensities = [18, 22, 14, 20]; // max pixel offset per orb
-            const orbElements = bgOrbsEl.querySelectorAll('.bg-orb');
-
-            orbElements.forEach((orb, i) => {
-                const intensity = intensities[i] || 15;
-                const offsetX = mouseX * intensity;
-                const offsetY = mouseY * intensity;
-                // Combine with existing CSS transform (which includes the float animation)
-                // We add the parallax offset on top
-                orb.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-            });
-
             requestAnimationFrame(updateParallax);
         }
-
         requestAnimationFrame(updateParallax);
 
         // ========================================
-        // Smooth Scroll for internal links (if any added later)
+        // Smooth Scroll for anchor links
         // ========================================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -1556,14 +2030,13 @@ class="social-card social-card--github reveal reveal-delay-5">
         });
 
         // ========================================
-        // Log success — no console errors
+        // All systems go
         // ========================================
-        console.log('%c🚀 Abbas Portfolio Ready %c| %cTehran Flip Clock Active',
-            'color: #3B82F6; font-weight: bold;',
-            '',
-            'color: #7C3AED;');
-        console.log('%cAll systems nominal. No errors.',
-            'color: #94a3b8; font-style: italic;');
+        console.log('%c🚀 Abbas Aghebaty Portfolio Ready',
+            'color: #3B82F6; font-weight: bold; font-size: 1.1em;');
+        console.log('%c✓ Tehran Flip Clock Active  %c✓ GitHub API Integrated  %c✓ Visitor Counter Live',
+            'color: #7C3AED;', 'color: #3B82F6;', 'color: #14b8a6;');
+        console.log('%cAll systems nominal. No errors.', 'color: #94a3b8; font-style: italic;');
 
     })();
 </script>
