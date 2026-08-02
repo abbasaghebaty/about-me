@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abbas — Portfolio & Link Hub</title>
+    <meta name="description" content="Abbas — JavaScript Developer, Web Developer, Open Source Creator. Portfolio and social link hub.">
+    <meta name="theme-color" content="#0a0a0f">
+
+    <style>
+        /* ========================================
+             CSS Custom Properties
+             ======================================== */
+        :root {
+            --bg: #0a0a0f;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --blue: #3B82F6;
+            --blue-glow: rgba(59, 130, 246, 0.4);
+            --purple: #7C3AED;
+            --purple-glow: rgba(124, 58, 237, 0.4);
+            --text: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --border-glass-hover: rgba(255, 255, 255, 0.2);
+            --glass-bg: rgba(255, 255, 255, 0.025);
+            --glass-bg-hover: rgba(255, 255, 255, 0.06);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-xs: 8px;
+            --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-smooth: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+            --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', 'Monaco', monospace;
+            --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --max-width: 880px;
+        }
+
+        /* ========================================
+             Reset & Base
+             ======================================== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+            cursor: default;
+        }
+
+        /* ========================================
+             Animated Background Orbs
+             ======================================== */
+        .bg-orbs {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.35;
+            will-change: transform;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .bg-orb--1 {
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, var(--blue) 0%, transparent 70%);
+            top: -8%;
+            left: -10%;
+            animation: orbFloat1 18s ease-in-out infinite;
+        }
+
+        .bg-orb--2 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, var(--purple) 0%, transparent 70%);
+            bottom: -10%;
+            right: -8%;
+            animation: orbFloat2 22s ease-in-out infinite;
+        }
+
+        .bg-orb--3 {
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, var(--blue) 0%, transparent 65%);
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: orbFloat3 20s ease-in-out infinite;
+            opacity: 0.2;
+        }
+
+        .bg-orb--4 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--purple) 0%, transparent 60%);
+            top: 20%;
+            right: 15%;
+            animation: orbFloat4 25s ease-in-out infinite;
+            opacity: 0.25;
+        }
+
+        @keyframes orbFloat1 {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(80px, 50px) scale(1.1);
+            }
+            50% {
+                transform: translate(30px, -30px) scale(0.9);
+            }
+            75% {
+                transform: translate(-40px, 20px) scale(1.05);
+            }
+        }
+
+        @keyframes orbFloat2 {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            25% {
+                transform: translate(-60px, -40px) scale(1.08);
+            }
+            50% {
+                transform: translate(-20px, 50px) scale(0.92);
+            }
+            75% {
+                transform: translate(50px, -20px) scale(1.04);
+            }
+        }
+
+        @keyframes orbFloat3 {
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            33% {
+                transform: translate(-30%, -60%) scale(1.15);
+            }
+            66% {
+                transform: translate(-70%, -40%) scale(0.85);
+            }
+        }
+
+        @keyframes orbFloat4 {
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(-70px, 60px) scale(1.2);
+            }
+        }
+
+        /* ========================================
+             Main Container
+             ======================================== */
+        .main-container {
+            position: relative;
+            z-index: 1;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        /* ========================================
+             Section Spacing
+             ======================================== */
+        .section {
+            margin-bottom: 5rem;
+        }
+
+        .section__title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        /* ========================================
+             Hero Section
+             ======================================== */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-top: 2rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .hero__avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            box-shadow:
+                0 0 40px var(--blue-glow),
+                0 0 80px rgba(124, 58, 237, 0.25);
+            position: relative;
+            user-select: none;
+            letter-spacing: 0;
+            transition: box-shadow var(--transition-smooth);
+            flex-shrink: 0;
+        }
+
+        .hero__avatar:hover {
+            box-shadow:
+                0 0 55px var(--blue-glow),
+                0 0 100px rgba(124, 58, 237, 0.4);
+        }
+
+        .hero__avatar-ring {
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            animation: ringPulse 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes ringPulse {
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.06);
+                opacity: 1;
+            }
+        }
+
+        .hero__name {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.4rem;
+            color: #fff;
+        }
+
+        .hero__typing-wrapper {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            min-height: 1.8em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+        }
+
+        .hero__typing-text {
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        .hero__typing-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background: var(--blue);
+            animation: cursorBlink 0.8s step-end infinite;
+            vertical-align: text-bottom;
+            margin-left: 2px;
+            border-radius: 1px;
+        }
+
+        @keyframes cursorBlink {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* ========================================
+             Flip Clock
+             ======================================== */
+        .clock-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .clock__label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .clock {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            user-select: none;
+        }
+
+        .clock__pair {
+            display: flex;
+            gap: 4px;
+        }
+
+        .clock__digit-wrapper {
+            perspective: 180px;
+            width: 64px;
+            height: 88px;
+            position: relative;
+        }
+
+        .clock__digit {
+            width: 64px;
+            height: 88px;
+            background: var(--glass-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                0 4px 24px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            transition: box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+            will-change: transform, opacity;
+        }
+
+        .clock__digit::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.5);
+            pointer-events: none;
+            z-index: 2;
+            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03);
+        }
+
+        .clock__digit-inner {
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            line-height: 1;
+        }
+
+        .clock__colon {
+            font-family: var(--font-mono);
+            font-size: 2.4rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.5);
+            padding: 0 2px;
+            animation: colonPulse 2s ease-in-out infinite;
+            align-self: center;
+            line-height: 1;
+            user-select: none;
+        }
+
+        @keyframes colonPulse {
+            0%,
+            100% {
+                opacity: 0.35;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        /* Flip animation states */
+        .clock__digit.flipping .clock__digit-inner {
+            animation: flipDown 350ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .clock__digit.flipping-up .clock__digit-inner {
+            animation: flipUp 350ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes flipDown {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            45% {
+                transform: translateY(50%);
+                opacity: 0;
+            }
+            55% {
+                transform: translateY(-50%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes flipUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            45% {
+                transform: translateY(-50%);
+                opacity: 0;
+            }
+            55% {
+                transform: translateY(50%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Subtle glow on digit change */
+        .clock__digit.glow-pulse {
+            animation: digitGlow 400ms ease-out;
+        }
+
+        @keyframes digitGlow {
+            0% {
+                box-shadow: 0 0 30px var(--blue-glow), 0 4px 24px rgba(0, 0, 0, 0.4);
+                border-color: rgba(59, 130, 246, 0.5);
+            }
+            100% {
+                box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+                border-color: var(--border-glass);
+            }
+        }
+
+        /* ========================================
+             Social Cards Grid
+             ======================================== */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .social-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            padding: 1.4rem 1rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            will-change: transform, box-shadow;
+        }
+
+        .social-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity var(--transition-smooth);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .social-card:hover::before {
+            opacity: 1;
+        }
+
+        .social-card--instagram::before {
+            background: radial-gradient(circle at center, rgba(233, 68, 126, 0.25) 0%, transparent 70%);
+        }
+        .social-card--telegram::before {
+            background: radial-gradient(circle at center, rgba(0, 136, 204, 0.25) 0%, transparent 70%);
+        }
+        .social-card--telegram-channel::before {
+            background: radial-gradient(circle at center, rgba(0, 160, 220, 0.25) 0%, transparent 70%);
+        }
+        .social-card--youtube::before {
+            background: radial-gradient(circle at center, rgba(255, 0, 0, 0.2) 0%, transparent 70%);
+        }
+        .social-card--github::before {
+            background: radial-gradient(circle at center, rgba(139, 148, 158, 0.2) 0%, transparent 70%);
+        }
+
+        .social-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-glass-hover);
+            box-shadow:
+                0 12px 40px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(255, 255, 255, 0.04);
+            background: var(--glass-bg-hover);
+        }
+
+        .social-card__icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+
+        .social-card__icon svg {
+            width: 28px;
+            height: 28px;
+            transition: transform var(--transition-fast);
+        }
+
+        .social-card:hover .social-card__icon svg {
+            transform: scale(1.1);
+        }
+
+        .social-card__name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.01em;
+        }
+
+        .social-card__desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-card__arrow {
+            position: relative;
+            z-index: 1;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            transition: all var(--transition-fast);
+            opacity: 0;
+            transform: translateX(-8px);
+        }
+
+        .social-card:hover .social-card__arrow {
+            opacity: 1;
+            transform: translateX(0);
+            color: var(--blue);
+        }
+
+        /* ========================================
+             Portfolio Grid
+             ======================================== */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .portfolio-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            will-change: transform;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-glass-hover);
+            box-shadow:
+                0 16px 48px rgba(0, 0, 0, 0.5),
+                0 0 25px rgba(59, 130, 246, 0.08);
+            background: var(--glass-bg-hover);
+        }
+
+        .portfolio-card__image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(124, 58, 237, 0.2));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-card__image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(124, 58, 237, 0.2));
+        }
+
+        .portfolio-card__body {
+            padding: 1.1rem 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .portfolio-card__title {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #fff;
+            letter-spacing: -0.01em;
+        }
+
+        .portfolio-card__desc {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .portfolio-card__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            color: var(--blue);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: gap var(--transition-fast);
+            margin-top: 0.3rem;
+            align-self: flex-start;
+        }
+
+        .portfolio-card__link:hover {
+            gap: 0.6rem;
+            color: #60a5fa;
+        }
+
+        .portfolio-card__link-arrow {
+            transition: transform var(--transition-fast);
+            font-size: 0.75rem;
+        }
+
+        .portfolio-card__link:hover .portfolio-card__link-arrow {
+            transform: translateX(3px);
+        }
+
+        /* ========================================
+             Stats Section
+             ======================================== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            transition: all var(--transition-smooth);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .stat-card:hover {
+            border-color: var(--border-glass-hover);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            background: var(--glass-bg-hover);
+        }
+
+        .stat-card__number {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .stat-card__label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-top: 0.3rem;
+            font-weight: 500;
+        }
+
+        /* ========================================
+             Footer
+             ======================================== */
+        .footer {
+            text-align: center;
+            padding: 2rem 0 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-glass);
+            margin-top: 2rem;
+        }
+
+        .footer__heart {
+            color: #ef4444;
+            display: inline-block;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            15% {
+                transform: scale(1.25);
+            }
+            30% {
+                transform: scale(1);
+            }
+            45% {
+                transform: scale(1.2);
+            }
+            60% {
+                transform: scale(1);
+            }
+        }
+
+        /* ========================================
+             Scroll Reveal
+             ======================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+        .reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
+        .reveal-delay-3 {
+            transition-delay: 0.3s;
+        }
+        .reveal-delay-4 {
+            transition-delay: 0.4s;
+        }
+        .reveal-delay-5 {
+            transition-delay: 0.5s;
+        }
+
+        /* ========================================
+             Responsive Design
+             ======================================== */
+        @media (max-width: 768px) {
+            .hero__name {
+                font-size: 1.8rem;
+            }
+            .hero__avatar {
+                width: 90px;
+                height: 90px;
+                font-size: 2.4rem;
+            }
+            .hero__typing-wrapper {
+                font-size: 0.95rem;
+            }
+            .clock__digit-wrapper {
+                width: 48px;
+                height: 68px;
+                perspective: 140px;
+            }
+            .clock__digit {
+                width: 48px;
+                height: 68px;
+                font-size: 2rem;
+                border-radius: var(--radius-xs);
+            }
+            .clock__colon {
+                font-size: 1.7rem;
+            }
+            .clock {
+                gap: 3px;
+            }
+            .clock__pair {
+                gap: 2px;
+            }
+            .social-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 0.7rem;
+            }
+            .social-card {
+                padding: 1rem 0.7rem;
+                gap: 0.4rem;
+            }
+            .social-card__icon {
+                width: 34px;
+                height: 34px;
+            }
+            .social-card__icon svg {
+                width: 22px;
+                height: 22px;
+            }
+            .social-card__name {
+                font-size: 0.82rem;
+            }
+            .social-card__desc {
+                font-size: 0.7rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.7rem;
+            }
+            .stat-card__number {
+                font-size: 1.8rem;
+            }
+            .section {
+                margin-bottom: 3rem;
+            }
+            .section__title {
+                font-size: 1.25rem;
+                margin-bottom: 1.8rem;
+            }
+            .bg-orb--1 {
+                width: 250px;
+                height: 250px;
+            }
+            .bg-orb--2 {
+                width: 220px;
+                height: 220px;
+            }
+            .bg-orb--3 {
+                width: 180px;
+                height: 180px;
+            }
+            .bg-orb--4 {
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .clock__digit-wrapper {
+                width: 38px;
+                height: 56px;
+                perspective: 110px;
+            }
+            .clock__digit {
+                width: 38px;
+                height: 56px;
+                font-size: 1.6rem;
+                border-radius: 6px;
+            }
+            .clock__colon {
+                font-size: 1.3rem;
+                padding: 0 1px;
+            }
+            .clock {
+                gap: 2px;
+            }
+            .clock__pair {
+                gap: 1px;
+            }
+            .social-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+            .hero__name {
+                font-size: 1.5rem;
+            }
+            .hero__avatar {
+                width: 75px;
+                height: 75px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================
+    Animated Background Orbs
+    ======================================== -->
+    <div class="bg-orbs" id="bgOrbs" aria-hidden="true">
+        <div class="bg-orb bg-orb--1"></div>
+        <div class="bg-orb bg-orb--2"></div>
+        <div class="bg-orb bg-orb--3"></div>
+        <div class="bg-orb bg-orb--4"></div>
+    </div>
+
+    <!-- ========================================
+    Main Content
+    ======================================== -->
+    <main class="main-container">
+
+        <!-- Hero Section -->
+        <section class="hero section reveal" aria-label="Hero">
+            <div class="hero__avatar" aria-label="Abbas profile picture">
+                <span>A</span>
+                <div class="hero__avatar-ring"></div>
+            </div>
+            <h1 class="hero__name">عباس</h1>
+            <div class="hero__typing-wrapper" aria-live="polite">
+                <span class="hero__typing-text" id="typingText"></span>
+                <span class="hero__typing-cursor" aria-hidden="true"></span>
+            </div>
+        </section>
+
+        <!-- Flip Clock Section — Tehran Time -->
+        <section class="clock-section section reveal" aria-label="Tehran live clock">
+            <p class="clock__label">Tehran Time</p>
+            <div class="clock" id="flipClock" aria-label="Current time in Tehran">
+                <!-- Hours -->
+                <div class="clock__pair">
+                    <div class="clock__digit-wrapper" data-digit="h0">
+                        <div class="clock__digit"><span class="clock__digit-inner">0</span></div>
+                    </div>
+                    <div class="clock__digit-wrapper" data-digit="h1">
+                        <div class="clock__digit"><span class="clock__digit-inner">0</span></div>
+                    </div>
+                </div>
+                <span class="clock__colon" aria-hidden="true">:</span>
+                <!-- Minutes -->
+                <div class="clock__pair">
+                    <div class="clock__digit-wrapper" data-digit="m0">
+                        <div class="clock__digit"><span class="clock__digit-inner">0</span></div>
+                    </div>
+                    <div class="clock__digit-wrapper" data-digit="m1">
+                        <div class="clock__digit"><span class="clock__digit-inner">0</span></div>
+                    </div>
+                </div>
+                <span class="clock__colon" aria-hidden="true">:</span>
+                <!-- Seconds -->
+                <div class="clock__pair">
+                    <div class="clock__digit-wrapper" data-digit="s0">
+                        <div class="clock__digit"><span class="clock__digit-inner">0</span></div>
+                    </div>
+                    <div class="clock__digit-wrapper" data-digit="s1">
+                        <div class="clock__digit"><span class="clock__digit-inner">0</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Links Section -->
+        <section class="section reveal" aria-label="Social links">
+            <h2 class="section__title">Connect With Me</h2>
+            <div class="social-grid">
+                <!-- Instagram -->
+                <a href="https://instagram.com/abbasaghebaty" target="_blank" rel="noopener noreferrer"
+                class="social-card social-card--instagram reveal reveal-delay-1">
+                <div class="social-card__icon">
+                    <!-- Instagram SVG -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+                    </svg>
+                </div>
+                <span class="social-card__name">Instagram</span>
+                <span class="social-card__desc">Daily updates</span>
+                <span class="social-card__arrow">→</span>
+            </a>
+
+            <!-- Telegram Channel -->
+            <a href="https://t.me/abbas_chanel" target="_blank" rel="noopener noreferrer"
+            class="social-card social-card--telegram-channel reveal reveal-delay-2">
+            <div class="social-card__icon">
+                <!-- Telegram SVG -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.5 3.5L2.5 11l6 2.5M21.5 3.5l-5 17-4-8M21.5 3.5l-13 10 2.5 6"></path>
+                </svg>
+            </div>
+            <span class="social-card__name">Channel</span>
+            <span class="social-card__desc">Telegram Channel</span>
+            <span class="social-card__arrow">→</span>
+        </a>
+
+        <!-- Telegram -->
+        <a href="https://t.me/abbas_js" target="_blank" rel="noopener noreferrer"
+        class="social-card social-card--telegram reveal reveal-delay-3">
+        <div class="social-card__icon">
+            <!-- Telegram SVG -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 3.5L2.5 11l6 2.5M21.5 3.5l-5 17-4-8M21.5 3.5l-13 10 2.5 6"></path>
+            </svg>
+        </div>
+        <span class="social-card__name">Telegram</span>
+        <span class="social-card__desc">Chat with me</span>
+        <span class="social-card__arrow">→</span>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://youtube.com/@abbas.chanel" target="_blank" rel="noopener noreferrer"
+    class="social-card social-card--youtube reveal reveal-delay-4">
+    <div class="social-card__icon">
+        <!-- YouTube SVG -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"></polygon>
+            <rect x="1" y="4" width="22" height="16" rx="4" ry="4"></rect>
+        </svg>
+    </div>
+    <span class="social-card__name">YouTube</span>
+    <span class="social-card__desc">Video tutorials</span>
+    <span class="social-card__arrow">→</span>
+</a>
+
+<!-- GitHub -->
+<a href="https://github.com/abbasaghebaty" target="_blank" rel="noopener noreferrer"
+class="social-card social-card--github reveal reveal-delay-5">
+<div class="social-card__icon">
+    <!-- GitHub SVG -->
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+    </svg>
+</div>
+<span class="social-card__name">GitHub</span>
+<span class="social-card__desc">Open source projects</span>
+<span class="social-card__arrow">→</span>
+</a>
+</div>
+</section>
+
+<!-- Portfolio Section -->
+<section class="section reveal" aria-label="Portfolio projects">
+    <h2 class="section__title">Featured Projects</h2>
+    <div class="portfolio-grid">
+        <!-- Project 1 -->
+        <article class="portfolio-card reveal reveal-delay-1">
+            <div class="portfolio-card__image">
+                <div class="portfolio-card__image-placeholder">⚡</div>
+            </div>
+            <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">TaskFlow</h3>
+                <p class="portfolio-card__desc">A modern task management app with real-time sync and beautiful drag-and-drop interface.</p>
+                <a href="#" class="portfolio-card__link" target="_blank" rel="noopener">
+                    View Project <span class="portfolio-card__link-arrow">→</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="portfolio-card reveal reveal-delay-2">
+            <div class="portfolio-card__image">
+                <div class="portfolio-card__image-placeholder">🧩</div>
+            </div>
+            <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">ComponentKit</h3>
+                <p class="portfolio-card__desc">A lightweight UI component library built with vanilla JavaScript — fast, accessible, and tree-shakeable.</p>
+                <a href="#" class="portfolio-card__link" target="_blank" rel="noopener">
+                    View Project <span class="portfolio-card__link-arrow">→</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="portfolio-card reveal reveal-delay-3">
+            <div class="portfolio-card__image">
+                <div class="portfolio-card__image-placeholder">📊</div>
+            </div>
+            <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">DashMetrics</h3>
+                <p class="portfolio-card__desc">Interactive analytics dashboard with animated charts, dark mode, and CSV export support.</p>
+                <a href="#" class="portfolio-card__link" target="_blank" rel="noopener">
+                    View Project <span class="portfolio-card__link-arrow">→</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="portfolio-card reveal reveal-delay-4">
+            <div class="portfolio-card__image">
+                <div class="portfolio-card__image-placeholder">🔐</div>
+            </div>
+            <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">AuthShield</h3>
+                <p class="portfolio-card__desc">Secure authentication microservice with JWT, OAuth2, and magic link support.</p>
+                <a href="#" class="portfolio-card__link" target="_blank" rel="noopener">
+                    View Project <span class="portfolio-card__link-arrow">→</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="portfolio-card reveal reveal-delay-5">
+            <div class="portfolio-card__image">
+                <div class="portfolio-card__image-placeholder">🌐</div>
+            </div>
+            <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">APIForge</h3>
+                <p class="portfolio-card__desc">REST API scaffolding tool that generates clean, documented endpoints from JSON schemas.</p>
+                <a href="#" class="portfolio-card__link" target="_blank" rel="noopener">
+                    View Project <span class="portfolio-card__link-arrow">→</span>
+                </a>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="section reveal" aria-label="Statistics">
+    <h2 class="section__title">By the Numbers</h2>
+    <div class="stats-grid">
+        <div class="stat-card reveal reveal-delay-1">
+            <div class="stat-card__number" data-count="47" data-suffix="">0</div>
+            <div class="stat-card__label">Projects</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+            <div class="stat-card__number" data-count="89" data-suffix="">0</div>
+            <div class="stat-card__label">Repositories</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+            <div class="stat-card__number" data-count="5" data-suffix="+">0</div>
+            <div class="stat-card__label">Years Experience</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-4">
+            <div class="stat-card__number" data-count="12.4" data-suffix="K" data-decimal="true">0</div>
+            <div class="stat-card__label">Visitors</div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer reveal">
+    <p>Made with <span class="footer__heart">❤️</span> by Abbas — <span id="currentYear"></span></p>
+</footer>
+
+</main>
+
+<script>
+    (function() {
+        // ========================================
+        // DOM Element References
+        // ========================================
+        const typingTextEl = document.getElementById('typingText');
+        const flipClockEl = document.getElementById('flipClock');
+        const bgOrbsEl = document.getElementById('bgOrbs');
+        const currentYearEl = document.getElementById('currentYear');
+
+        // Digit wrapper elements for the flip clock
+        const digitWrappers = {
+            h0: flipClockEl.querySelector('[data-digit="h0"]'),
+            h1: flipClockEl.querySelector('[data-digit="h1"]'),
+            m0: flipClockEl.querySelector('[data-digit="m0"]'),
+            m1: flipClockEl.querySelector('[data-digit="m1"]'),
+            s0: flipClockEl.querySelector('[data-digit="s0"]'),
+            s1: flipClockEl.querySelector('[data-digit="s1"]'),
+        };
+
+        // Store current displayed digits to detect changes
+        let currentDigits = {
+            h0: null,
+            h1: null,
+            m0: null,
+            m1: null,
+            s0: null,
+            s1: null,
+        };
+
+        // ========================================
+        // Set Current Year in Footer
+        // ========================================
+        currentYearEl.textContent = new Date().getFullYear();
+
+        // ========================================
+        // Typing Animation
+        // ========================================
+        const titles = [
+            'JavaScript Developer',
+            'Web Developer',
+            'Open Source Creator',
+        ];
+        let titleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingPause = 1800; // Pause after full word typed
+        let typingSpeed = 70; // ms per character when typing
+        let deletingSpeed = 35; // ms per character when deleting
+        let pauseTimer = null;
+
+        function typeAnimation() {
+            const currentTitle = titles[titleIndex];
+
+            if (isDeleting) {
+                // Deleting characters
+                charIndex--;
+                typingTextEl.textContent = currentTitle.substring(0, charIndex);
+
+                if (charIndex <= 0) {
+                    // Finished deleting — move to next title
+                    isDeleting = false;
+                    titleIndex = (titleIndex + 1) % titles.length;
+                    // Small gap before starting to type new word
+                    setTimeout(typeAnimation, 250);
+                    return;
+                }
+                setTimeout(typeAnimation, deletingSpeed);
+            } else {
+                // Typing characters
+                charIndex++;
+                typingTextEl.textContent = currentTitle.substring(0, charIndex);
+
+                if (charIndex >= currentTitle.length) {
+                    // Word fully typed — pause then start deleting
+                    isDeleting = true;
+                    pauseTimer = setTimeout(typeAnimation, typingPause);
+                    return;
+                }
+                // Random micro-variation for natural feel
+                const speed = typingSpeed + Math.random() * 40;
+                setTimeout(typeAnimation, speed);
+            }
+        }
+
+        // Start the typing animation
+        setTimeout(typeAnimation, 400);
+
+        // ========================================
+        // Flip Clock — Tehran Time
+        // ========================================
+        function getTehranTime() {
+            const now = new Date();
+            const options = {
+                timeZone: 'Asia/Tehran',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false,
+            };
+            const formatter = new Intl.DateTimeFormat('en-US', options);
+            const parts = formatter.formatToParts(now);
+
+            let hours = '00';
+            let minutes = '00';
+            let seconds = '00';
+
+            for (const part of parts) {
+                if (part.type === 'hour') hours = part.value.padStart(2, '0');
+                if (part.type === 'minute') minutes = part.value.padStart(2, '0');
+                if (part.type === 'second') seconds = part.value.padStart(2, '0');
+            }
+
+            return { hours, minutes, seconds };
+        }
+
+        /**
+         * Animates a single digit with a flip-like effect.
+         * Uses a two-phase approach: the digit slides down, content swaps, then slides up into place.
+         */
+        function animateDigit(wrapperKey, newDigitValue) {
+            const wrapper = digitWrappers[wrapperKey];
+            if (!wrapper) return;
+
+            const digitEl = wrapper.querySelector('.clock__digit');
+            const innerEl = digitEl.querySelector('.clock__digit-inner');
+            const currentValue = innerEl.textContent;
+
+            // If the digit hasn't changed, skip animation
+            if (currentValue === newDigitValue && currentDigits[wrapperKey] === newDigitValue) {
+                return;
+            }
+
+            // Update tracking
+            currentDigits[wrapperKey] = newDigitValue;
+
+            // Phase 1: quick flip-down (slide out)
+            digitEl.classList.add('flipping');
+            digitEl.classList.add('glow-pulse');
+
+            // At midpoint of the animation (~175ms), swap the text
+            setTimeout(() => {
+                innerEl.textContent = newDigitValue;
+                digitEl.classList.remove('flipping');
+                digitEl.classList.add('flipping-up');
+
+                // Clean up after animation completes
+                setTimeout(() => {
+                    digitEl.classList.remove('flipping-up');
+                    digitEl.classList.remove('glow-pulse');
+                }, 360);
+            }, 170);
+        }
+
+        /**
+         * Updates all clock digits, animating only the ones that changed.
+         */
+        function updateClock() {
+            const time = getTehranTime();
+            const hStr = time.hours; // "HH"
+            const mStr = time.minutes; // "MM"
+            const sStr = time.seconds; // "SS"
+
+            const newDigits = {
+                h0: hStr[0],
+                h1: hStr[1],
+                m0: mStr[0],
+                m1: mStr[1],
+                s0: sStr[0],
+                s1: sStr[1],
+            };
+
+            // Initialize on first run (no animation)
+            if (currentDigits.h0 === null) {
+                for (const key of Object.keys(newDigits)) {
+                    const wrapper = digitWrappers[key];
+                    if (wrapper) {
+                        wrapper.querySelector('.clock__digit-inner').textContent = newDigits[key];
+                        currentDigits[key] = newDigits[key];
+                    }
+                }
+                return;
+            }
+
+            // Animate only changed digits
+            for (const key of Object.keys(newDigits)) {
+                if (newDigits[key] !== currentDigits[key]) {
+                    animateDigit(key, newDigits[key]);
+                }
+            }
+        }
+
+        // Run clock update immediately and then every 200ms (check frequently for smooth updates)
+        updateClock();
+        setInterval(updateClock, 200);
+
+        // ========================================
+        // Count-Up Animation for Stats
+        // ========================================
+        function animateCountUp(el) {
+            const targetRaw = el.getAttribute('data-count');
+            const suffix = el.getAttribute('data-suffix') || '';
+            const isDecimal = el.getAttribute('data-decimal') === 'true';
+            const target = parseFloat(targetRaw);
+            const duration = 1800; // ms
+            const startTime = performance.now();
+            const startVal = 0;
+
+            function easeOutCubic(t) {
+                return 1 - Math.pow(1 - t, 3);
+            }
+
+            function update(now) {
+                const elapsed = now - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easedProgress = easeOutCubic(progress);
+                const current = startVal + (target - startVal) * easedProgress;
+
+                if (isDecimal) {
+                    el.textContent = current.toFixed(1) + suffix;
+                } else {
+                    el.textContent = Math.round(current) + suffix;
+                }
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    // Ensure final value is exact
+                    if (isDecimal) {
+                        el.textContent = target.toFixed(1) + suffix;
+                    } else {
+                        el.textContent = Math.round(target) + suffix;
+                    }
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        // ========================================
+        // Intersection Observer — Scroll Reveal + Count-Up Trigger
+        // ========================================
+        const revealElements = document.querySelectorAll('.reveal');
+        const statNumberElements = document.querySelectorAll('.stat-card__number[data-count]');
+        let statsAnimated = false;
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -40px 0px',
+            threshold: 0.12,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            for (const entry of entries) {
+                if (entry.isIntersecting) {
+                    // Add revealed class for scroll animations
+                    if (entry.target.classList.contains('reveal')) {
+                        entry.target.classList.add('revealed');
+                    }
+
+                    // Trigger count-up for stat numbers when they come into view
+                    if (
+                        !statsAnimated &&
+                        entry.target.closest('.stats-grid') &&
+                        entry.target.classList.contains('stat-card')
+                    ) {
+                        // Check if at least one stat card is visible
+                        const anyStatVisible = Array.from(statNumberElements).some(el => {
+                            const rect = el.getBoundingClientRect();
+                            return rect.top < window.innerHeight && rect.bottom > 0;
+                        });
+                        if (anyStatVisible) {
+                            statsAnimated = true;
+                            statNumberElements.forEach(el => animateCountUp(el));
+                        }
+                    }
+
+                    // Unobserve reveal elements after they've been revealed
+                    if (entry.target.classList.contains('reveal')) {
+                        observer.unobserve(entry.target);
+                    }
+                }
+            }
+        }, observerOptions);
+
+        // Observe all reveal elements
+        revealElements.forEach(el => observer.observe(el));
+
+        // Also observe stat cards specifically for count-up
+        document.querySelectorAll('.stat-card').forEach(el => observer.observe(el));
+
+        // ========================================
+        // Mouse Parallax for Background Orbs
+        // ========================================
+        const orbs = bgOrbsEl.querySelectorAll('.bg-orb');
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetMouseX = 0;
+        let targetMouseY = 0;
+        let isTouchDevice = false;
+
+        // Detect touch device
+        window.addEventListener('touchstart', function onFirstTouch() {
+            isTouchDevice = true;
+            window.removeEventListener('touchstart', onFirstTouch);
+        }, { once: true, passive: true });
+
+        document.addEventListener('mousemove', function(e) {
+            if (isTouchDevice) return;
+            // Normalize mouse position relative to viewport center
+            targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2; // -1 to 1
+            targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2; // -1 to 1
+        }, { passive: true });
+
+        function updateParallax() {
+            // Smoothly interpolate mouse position
+            mouseX += (targetMouseX - mouseX) * 0.04;
+            mouseY += (targetMouseY - mouseY) * 0.04;
+
+            if (isTouchDevice) {
+                // On touch devices, just let CSS animations handle orb movement
+                requestAnimationFrame(updateParallax);
+                return;
+            }
+
+            // Apply subtle parallax to each orb with different intensities
+            const intensities = [18, 22, 14, 20]; // max pixel offset per orb
+            const orbElements = bgOrbsEl.querySelectorAll('.bg-orb');
+
+            orbElements.forEach((orb, i) => {
+                const intensity = intensities[i] || 15;
+                const offsetX = mouseX * intensity;
+                const offsetY = mouseY * intensity;
+                // Combine with existing CSS transform (which includes the float animation)
+                // We add the parallax offset on top
+                orb.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            });
+
+            requestAnimationFrame(updateParallax);
+        }
+
+        requestAnimationFrame(updateParallax);
+
+        // ========================================
+        // Smooth Scroll for internal links (if any added later)
+        // ========================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetEl = document.querySelector(targetId);
+                if (targetEl) {
+                    e.preventDefault();
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ========================================
+        // Log success — no console errors
+        // ========================================
+        console.log('%c🚀 Abbas Portfolio Ready %c| %cTehran Flip Clock Active',
+            'color: #3B82F6; font-weight: bold;',
+            '',
+            'color: #7C3AED;');
+        console.log('%cAll systems nominal. No errors.',
+            'color: #94a3b8; font-style: italic;');
+
+    })();
+</script>
+</body>
+</html>
