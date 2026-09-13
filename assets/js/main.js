@@ -11,7 +11,6 @@ import { initFlipClock } from './flip-clock.js';
 import { initStats } from './stats.js';
 import { initVisitorCounter } from './visitor-counter.js';
 import { initTiltEffect } from './tilt-effect.js';
-import { initScrollReveal } from './scroll-reveal.js';
 import { initParallax } from './parallax.js';
 import { initSmoothScroll } from './smooth-scroll.js';
 
@@ -36,20 +35,33 @@ import { initSmoothScroll } from './smooth-scroll.js';
         yearsExperience,
     });
 
+    // projects.js loads projects asynchronously from projects.json.
+    // Update the Projects stat when that data becomes available.
+    window.addEventListener('projects:loaded', (event) => {
+        const count = event.detail?.count;
+        if (typeof count !== 'number') return;
+
+        statValues.projects = count;
+        const statEl = dom.statProjectsEl;
+        if (statEl && !statAnimated.projects) {
+            statEl.textContent = String(count);
+        }
+        tryAnimateStat('projects');
+    });
+
     initVisitorCounter({ statValues, tryAnimateStat, statVisitorsEl: dom.statVisitorsEl });
 
     initTiltEffect();
-    initScrollReveal();
     initParallax(dom.bgOrbsEl);
     initSmoothScroll();
 
-        // ========================================
-        // All systems go
-        // ========================================
-        console.log('%c🚀 Abbas Aghebaty Portfolio Ready',
-            'color: #3B82F6; font-weight: bold; font-size: 1.1em;');
-        console.log('%c✓ Tehran Flip Clock Active  %c✓ Visitor Counter Live',
-            'color: #7C3AED;', 'color: #14b8a6;');
-        console.log('%cAll systems nominal. No errors.', 'color: #94a3b8; font-style: italic;');
+    // ========================================
+    // All systems go
+    // ========================================
+    console.log('%c🚀 Abbas Aghebaty Portfolio Ready',
+        'color: #3B82F6; font-weight: bold; font-size: 1.1em;');
+    console.log('%c✓ Tehran Flip Clock Active  %c✓ Visitor Counter Live',
+        'color: #7C3AED;', 'color: #14b8a6;');
+    console.log('%cAll systems nominal. No errors.', 'color: #94a3b8; font-style: italic;');
 
 })();
