@@ -70,7 +70,6 @@
                 <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--purple"></span>Graphic Design</span>
                 <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--teal"></span>Menu Design for Cafes & Restaurants</span>
                 <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--blue"></span>Open Source Projects</span>
-                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--purple"></span>GitHub</span>
                 <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--teal"></span>Responsive Design</span>
             </div>
         </section>
@@ -196,144 +195,112 @@
     <span class="social-card__desc">Video tutorials</span>
     <span class="social-card__arrow">→</span>
 </a>
-<!-- GitHub -->
-<a href="https://github.com/abbasaghebaty" target="_blank" rel="noopener noreferrer"
-class="social-card social-card--github reveal reveal-delay-6">
-<div class="social-card__icon">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-    </svg>
-</div>
-<span class="social-card__name">GitHub</span>
-<span class="social-card__desc">Open source projects</span>
-<span class="social-card__arrow">→</span>
-</a>
 </div>
 </section>
 
 <!-- Portfolio Section -->
 <section class="section reveal" aria-label="Portfolio projects" id="portfolioSection">
     <h2 class="section__title">Featured Projects</h2>
-    <div class="portfolio-grid" id="portfolioGrid">
+    <div class="projects-table-wrap reveal">
+        <table class="projects-table">
+            <thead>
+                <tr>
+                    <th scope="col">Project</th>
+                    <th scope="col">Description</th>
+                </tr>
+            </thead>
+            <tbody id="projectsTableBody">
+                <!-- Project 1: Increase Photo Resolution -->
+                <tr data-project>
+                    <td class="projects-table__name">
+                        <span class="projects-table__icon" aria-hidden="true">🖼️</span>
+                        <a href="https://abbasaghebaty.github.io/Increase-photo-resolotion/" target="_blank" rel="noopener">
+                            Increase Photo Resolution <span class="projects-table__arrow">→</span>
+                        </a>
+                    </td>
+                    <td>
+                        <p class="projects-table__desc">A lightweight web application that enhances image resolution with multiple upscale levels while maintaining a fast and responsive user experience.</p>
+                        <div class="projects-table__tech">
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge tech-badge--purple">Canvas API</span>
+                            <span class="tech-badge tech-badge--teal">Image Processing</span>
+                        </div>
+                    </td>
+                </tr>
 
-        <!-- Project 1: Increase Photo Resolution -->
-        <article class="portfolio-card reveal reveal-delay-1" data-project>
-            <div class="portfolio-card__image">
-                <div class="portfolio-card__image-placeholder">🖼️</div>
-            </div>
-            <div class="portfolio-card__body">
-                <h3 class="portfolio-card__title">Increase Photo Resolution</h3>
-                <p class="portfolio-card__desc">A lightweight web application that enhances image resolution with multiple upscale levels while maintaining a fast and responsive user experience.</p>
-                <div class="portfolio-card__tech">
-                    <span class="portfolio-card__tech-badge">JavaScript</span>
-                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--purple">Canvas API</span>
-                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--teal">Image Processing</span>
-                </div>
-                <div class="portfolio-card__actions">
-                    <a href="https://github.com/abbasaghebaty/Increase-photo-resolotion" class="portfolio-card__link" target="_blank" rel="noopener">
-                        GitHub <span class="portfolio-card__link-arrow">→</span>
-                    </a>
-                    <a href="https://abbasaghebaty.github.io/Increase-photo-resolotion/" class="portfolio-card__link portfolio-card__link--demo" target="_blank" rel="noopener">
-                        Live Demo <span class="portfolio-card__link-arrow">→</span>
-                    </a>
-                </div>
-            </div>
-        </article>
+                <!-- Project 2: Caption Generator -->
+                <tr data-project>
+                    <td class="projects-table__name">
+                        <span class="projects-table__icon" aria-hidden="true">✍️</span>
+                        <a href="https://abbasaghebaty.github.io/Caption-Generator/" target="_blank" rel="noopener">
+                            Caption Generator <span class="projects-table__arrow">→</span>
+                        </a>
+                    </td>
+                    <td>
+                        <p class="projects-table__desc">An intelligent caption generation tool for Telegram shop owners with optimized formatting, emojis and category-based templates.</p>
+                        <div class="projects-table__tech">
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge tech-badge--purple">Telegram API</span>
+                            <span class="tech-badge tech-badge--teal">Automation</span>
+                        </div>
+                    </td>
+                </tr>
 
-        <!-- Project 2: Caption Generator -->
-        <article class="portfolio-card reveal reveal-delay-2" data-project>
-            <div class="portfolio-card__image">
-                <div class="portfolio-card__image-placeholder">✍️</div>
-            </div>
-            <div class="portfolio-card__body">
-                <h3 class="portfolio-card__title">Caption Generator</h3>
-                <p class="portfolio-card__desc">An intelligent caption generation tool for Telegram shop owners with optimized formatting, emojis and category-based templates.</p>
-                <div class="portfolio-card__tech">
-                    <span class="portfolio-card__tech-badge">JavaScript</span>
-                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--purple">Telegram API</span>
-                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--teal">Automation</span>
-                </div>
-                <div class="portfolio-card__actions">
-                    <a href="https://github.com/abbasaghebaty/Caption-Generator" class="portfolio-card__link" target="_blank" rel="noopener">
-                        GitHub <span class="portfolio-card__link-arrow">→</span>
-                    </a>
-                    <a href="https://abbasaghebaty.github.io/Caption-Generator/" class="portfolio-card__link portfolio-card__link--demo" target="_blank" rel="noopener">
-                        Live Demo <span class="portfolio-card__link-arrow">→</span>
-                    </a>
-                </div>
-            </div>
-        </article>
+                <!-- Project 3: YourClean Telegram Bot -->
+                <tr data-project>
+                    <td class="projects-table__name">
+                        <span class="projects-table__icon" aria-hidden="true">🤖</span>
+                        <a href="https://t.me/YourClean_bot" target="_blank" rel="noopener">
+                            YourClean Telegram Bot <span class="projects-table__arrow">→</span>
+                        </a>
+                    </td>
+                    <td>
+                        <p class="projects-table__desc">A Telegram bot developed for store management, product lookup, customer interaction and quick access to shop information.</p>
+                        <div class="projects-table__tech">
+                            <span class="tech-badge">Node.js</span>
+                            <span class="tech-badge tech-badge--purple">Telegram Bot API</span>
+                            <span class="tech-badge tech-badge--teal">Store Management</span>
+                        </div>
+                    </td>
+                </tr>
 
-        <!-- Project 3: YourClean Telegram Bot -->
-        <article class="portfolio-card reveal reveal-delay-3" data-project>
-            <div class="portfolio-card__image">
-                <div class="portfolio-card__image-placeholder">🤖</div>
-            </div>
-            <div class="portfolio-card__body">
-                <h3 class="portfolio-card__title">YourClean Telegram Bot</h3>
-                <p class="portfolio-card__desc">A Telegram bot developed for store management, product lookup, customer interaction and quick access to shop information.</p>
-                <div class="portfolio-card__tech">
-                    <span class="portfolio-card__tech-badge">Node.js</span>
-                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--purple">Telegram Bot API</span>
-                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--teal">Store Management</span>
-                </div>
-                <div class="portfolio-card__actions">
-                    <a href="https://github.com/abbasaghebaty/Yourclean-bot" class="portfolio-card__link" target="_blank" rel="noopener">
-                        GitHub <span class="portfolio-card__link-arrow">→</span>
-                    </a>
-                    <a href="https://t.me/YourClean_bot" class="portfolio-card__link portfolio-card__link--demo" target="_blank" rel="noopener">
-                        Open Bot <span class="portfolio-card__link-arrow">→</span>
-                    </a>
-                </div>
-            </div>
-        </article>
+                <!-- Project 4: Shoma Shop Website -->
+                <tr data-project>
+                    <td class="projects-table__name">
+                        <span class="projects-table__icon" aria-hidden="true">🛍️</span>
+                        <a href="http://shoma-shop.ir/" target="_blank" rel="noopener">
+                            Shoma Shop Website <span class="projects-table__arrow">→</span>
+                        </a>
+                    </td>
+                    <td>
+                        <p class="projects-table__desc">A modern responsive website designed for a local shop featuring product showcases, contact information and optimized user experience.</p>
+                        <div class="projects-table__tech">
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge tech-badge--purple">CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge tech-badge--teal">Responsive</span>
+                        </div>
+                    </td>
+                </tr>
 
-        <!-- Project 4: Shoma Shop Website -->
-        <article class="portfolio-card reveal reveal-delay-4" data-project>
-            <div class="portfolio-card__image">
-                <div class="portfolio-card__image-placeholder">🛍️</div>
-            </div>
-            <div class="portfolio-card__body">
-                <h3 class="portfolio-card__title">Shoma Shop Website</h3>
-                <p class="portfolio-card__desc">A modern responsive website designed for a local shop featuring product showcases, contact information and optimized user experience.</p>
-                <div class="portfolio-card__tech">
-                    <span class="portfolio-card__tech-badge">HTML</span>
-                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--purple">CSS</span>
-                    <span class="portfolio-card__tech-badge">JavaScript</span>
-                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--teal">Responsive</span>
-                </div>
-                <div class="portfolio-card__actions">
-                    <a href="https://github.com/abbasaghebaty/Shoma.shop" class="portfolio-card__link" target="_blank" rel="noopener">
-                        GitHub <span class="portfolio-card__link-arrow">→</span>
-                    </a>
-                    <a href="http://shoma-shop.ir/" class="portfolio-card__link portfolio-card__link--demo" target="_blank" rel="noopener">
-                        Live Demo <span class="portfolio-card__link-arrow">→</span>
-                    </a>
-                </div>
-            </div>
-        </article>
-
-        <!-- Project 5: Personal Portfolio -->
-        <article class="portfolio-card reveal reveal-delay-5" data-project>
-            <div class="portfolio-card__image">
-                <div class="portfolio-card__image-placeholder">🚀</div>
-            </div>
-            <div class="portfolio-card__body">
-                <h3 class="portfolio-card__title">Personal Portfolio</h3>
-                <p class="portfolio-card__desc">My personal portfolio and launcher that brings together all of my social links, featured projects and development journey in one place.</p>
-                <div class="portfolio-card__tech">
-                    <span class="portfolio-card__tech-badge">HTML</span>
-                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--purple">CSS</span>
-                    <span class="portfolio-card__tech-badge">JavaScript</span>
-                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--teal">Glassmorphism</span>
-                </div>
-                <div class="portfolio-card__actions">
-                    <span class="portfolio-card__link portfolio-card__link--secondary" style="cursor:default;opacity:0.7;">
-                        Current Website
-                    </span>
-                </div>
-            </div>
-        </article>
+                <!-- Project 5: Personal Portfolio -->
+                <tr data-project>
+                    <td class="projects-table__name">
+                        <span class="projects-table__icon" aria-hidden="true">🚀</span>
+                        <span class="projects-table__current">Personal Portfolio</span>
+                    </td>
+                    <td>
+                        <p class="projects-table__desc">My personal portfolio and launcher that brings together all of my social links, featured projects and development journey in one place.</p>
+                        <div class="projects-table__tech">
+                            <span class="tech-badge">HTML</span>
+                            <span class="tech-badge tech-badge--purple">CSS</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge tech-badge--teal">Glassmorphism</span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </section>
 
@@ -346,14 +313,10 @@ class="social-card social-card--github reveal reveal-delay-6">
             <div class="stat-card__label">Projects</div>
         </div>
         <div class="stat-card reveal reveal-delay-2">
-            <div class="stat-card__number" id="statRepos">--</div>
-            <div class="stat-card__label">Repositories</div>
-        </div>
-        <div class="stat-card reveal reveal-delay-3">
             <div class="stat-card__number" id="statExperience">0+</div>
             <div class="stat-card__label">Years Experience</div>
         </div>
-        <div class="stat-card reveal reveal-delay-4">
+        <div class="stat-card reveal reveal-delay-3">
             <div class="stat-card__number" id="statVisitors">--</div>
             <div class="stat-card__label">Visitors</div>
         </div>
