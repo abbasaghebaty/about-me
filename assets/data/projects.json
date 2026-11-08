@@ -32,7 +32,6 @@
       }
     ]
   },
-  null,
   {
     "title": "Increase Photo Resolution",
     "description": "A lightweight web application that enhances image resolution with multiple upscale levels while maintaining a fast and responsive user experience.",
