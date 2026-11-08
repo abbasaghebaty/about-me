@@ -15,6 +15,20 @@
     ]
   },
   {
+    "title": "Study Planner",
+    "description": "A study planning and monitoring system for managing schoolwork in one place. Track assignments and exams, organize what to study and by when, and keep your study plan and upcoming deadlines under control. Available as both a web dashboard and a Telegram bot.",
+    "tech": [
+      { "label": "JavaScript" },
+      { "label": "Web Dashboard", "variant": "purple" },
+      { "label": "Telegram Bot API", "variant": "teal" },
+      { "label": "Study Planning", "variant": "teal" }
+    ],
+    "links": [
+      { "type": "demo", "label": "Web Dashboard", "url": "https://abbasaghebaty.github.io/lesson-dashboard/" },
+      { "type": "demo", "label": "Telegram Bot", "url": "https://t.me/StudyReplanner_bot" }
+    ]
+  },
+  {
     "title": "Increase Photo Resolution",
     "description": "A lightweight web application that enhances image resolution with multiple upscale levels while maintaining a fast and responsive user experience.",
     "tech": [
@@ -49,7 +63,7 @@
       { "label": "Modular Architecture", "variant": "teal" }
     ],
     "links": [
-      { "type": "demo", "label": "Open Bot", "url": "https://t.me/abbas_aghebaty_bot" }
+      { "type": "demo", "label": "Open Bot", "url": "https://t.me/aghebaty_bot" }
     ]
   },
   {
