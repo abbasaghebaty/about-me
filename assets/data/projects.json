@@ -1,107 +1,258 @@
 [
   {
-    "__ordering_note": "PROJECT ORDERING RULES — DO NOT REMOVE OR IGNORE. Keep projects ordered exactly by priority: (1) Websites first. (2) Within Websites, Shoma Shop Website must be first and Caption Generator must be last. (3) Telegram bots come after all Websites. (4) Within Telegram bots, Abbas Assistant Bot must be first. (5) Personal Portfolio must ALWAYS remain the very last project. When adding or editing projects, preserve these rules. Do not sort this array alphabetically or automatically reorder it by title.",
+    "__ordering_note": "PROJECT ORDERING RULES — Keep all websites first, then Telegram bots. Website order: Shoma Shop Website, Increase Photo Resolution, Study Planner, Caption Generator. Telegram bot order: YourClean Telegram Bot, Abbas Assistant Bot, Study Planner Bot, Academy AdminX Bot. Personal Portfolio must ALWAYS remain the very last project. Preserve all project descriptions and technical details when reordering.",
     "title": "Shoma Shop Website",
     "description": "A modern responsive website designed for a local shop featuring product showcases, contact information and optimized user experience.",
     "tech": [
-      { "label": "HTML" },
-      { "label": "CSS", "variant": "purple" },
-      { "label": "JavaScript" },
-      { "label": "Responsive", "variant": "teal" }
+      {
+        "label": "HTML"
+      },
+      {
+        "label": "CSS",
+        "variant": "purple"
+      },
+      {
+        "label": "JavaScript"
+      },
+      {
+        "label": "Responsive",
+        "variant": "teal"
+      }
     ],
     "links": [
-      { "type": "github", "label": "GitHub", "url": "https://github.com/abbasaghebaty/Shoma.shop" },
-      { "type": "demo", "label": "Live Demo", "url": "http://shoma-shop.ir/" }
+      {
+        "type": "github",
+        "label": "GitHub",
+        "url": "https://github.com/abbasaghebaty/Shoma.shop"
+      },
+      {
+        "type": "demo",
+        "label": "Live Demo",
+        "url": "http://shoma-shop.ir/"
+      }
+    ]
+  },
+  null,
+  {
+    "title": "Increase Photo Resolution",
+    "description": "A lightweight web application that enhances image resolution with multiple upscale levels while maintaining a fast and responsive user experience.",
+    "tech": [
+      {
+        "label": "JavaScript"
+      },
+      {
+        "label": "Canvas API",
+        "variant": "purple"
+      },
+      {
+        "label": "Image Processing",
+        "variant": "teal"
+      }
+    ],
+    "links": [
+      {
+        "type": "github",
+        "label": "GitHub",
+        "url": "https://github.com/abbasaghebaty/Increase-photo-resolotion"
+      },
+      {
+        "type": "demo",
+        "label": "Live Demo",
+        "url": "https://abbasaghebaty.github.io/Increase-photo-resolotion/"
+      }
     ]
   },
   {
     "title": "Study Planner",
     "description": "A study planning and monitoring system for managing schoolwork in one place. Track assignments and exams, organize what to study and by when, and keep your study plan and upcoming deadlines under control. Available as both a web dashboard and a Telegram bot.",
     "tech": [
-      { "label": "JavaScript" },
-      { "label": "Web Dashboard", "variant": "purple" },
-      { "label": "Telegram Bot API", "variant": "teal" },
-      { "label": "Study Planning", "variant": "teal" }
+      {
+        "label": "JavaScript"
+      },
+      {
+        "label": "Web Dashboard",
+        "variant": "purple"
+      },
+      {
+        "label": "Telegram Bot API",
+        "variant": "teal"
+      },
+      {
+        "label": "Study Planning",
+        "variant": "teal"
+      }
     ],
     "links": [
-      { "type": "demo", "label": "Web Dashboard", "url": "https://abbasaghebaty.github.io/lesson-dashboard/" },
-      { "type": "demo", "label": "Telegram Bot", "url": "https://t.me/StudyReplanner_bot" }
-    ]
-  },
-  {
-    "title": "Increase Photo Resolution",
-    "description": "A lightweight web application that enhances image resolution with multiple upscale levels while maintaining a fast and responsive user experience.",
-    "tech": [
-      { "label": "JavaScript" },
-      { "label": "Canvas API", "variant": "purple" },
-      { "label": "Image Processing", "variant": "teal" }
-    ],
-    "links": [
-      { "type": "github", "label": "GitHub", "url": "https://github.com/abbasaghebaty/Increase-photo-resolotion" },
-      { "type": "demo", "label": "Live Demo", "url": "https://abbasaghebaty.github.io/Increase-photo-resolotion/" }
+      {
+        "type": "demo",
+        "label": "Web Dashboard",
+        "url": "https://abbasaghebaty.github.io/lesson-dashboard/"
+      },
+      {
+        "type": "demo",
+        "label": "Telegram Bot",
+        "url": "https://t.me/StudyReplanner_bot"
+      }
     ]
   },
   {
     "title": "Caption Generator",
     "description": "An intelligent caption generation tool for Telegram shop owners with optimized formatting, emojis and category-based templates.",
     "tech": [
-      { "label": "JavaScript" },
-      { "label": "Telegram API", "variant": "purple" },
-      { "label": "Automation", "variant": "teal" }
+      {
+        "label": "JavaScript"
+      },
+      {
+        "label": "Telegram API",
+        "variant": "purple"
+      },
+      {
+        "label": "Automation",
+        "variant": "teal"
+      }
     ],
     "links": [
-      { "type": "github", "label": "GitHub", "url": "https://github.com/abbasaghebaty/Caption-Generator" },
-      { "type": "demo", "label": "Live Demo", "url": "https://abbasaghebaty.github.io/Caption-Generator/" }
-    ]
-  },
-  {
-    "title": "Abbas Assistant Bot",
-    "description": "A personal Telegram assistant for introducing me, my projects and contact methods. The bot is built with a modular structure to provide a simple and professional environment for presenting my activities, skills and projects.",
-    "tech": [
-      { "label": "Node.js" },
-      { "label": "Telegram Bot API", "variant": "purple" },
-      { "label": "Modular Architecture", "variant": "teal" }
-    ],
-    "links": [
-      { "type": "demo", "label": "Open Bot", "url": "https://t.me/aghebaty_bot" }
-    ]
-  },
-  {
-    "title": "Academy AdminX Bot",
-    "description": "A Telegram sales and management bot for an educational package, including product presentation, order registration, payment and user access management. The bot was designed to manage the purchase and access delivery process.",
-    "tech": [
-      { "label": "Node.js" },
-      { "label": "Telegram Bot API", "variant": "purple" },
-      { "label": "Payment & Access Management", "variant": "teal" }
-    ],
-    "links": [
-      { "type": "demo", "label": "Open Bot", "url": "https://t.me/academy_adminx_Bot" }
+      {
+        "type": "github",
+        "label": "GitHub",
+        "url": "https://github.com/abbasaghebaty/Caption-Generator"
+      },
+      {
+        "type": "demo",
+        "label": "Live Demo",
+        "url": "https://abbasaghebaty.github.io/Caption-Generator/"
+      }
     ]
   },
   {
     "title": "YourClean Telegram Bot",
     "description": "A Telegram bot developed for store management, product lookup, customer interaction and quick access to shop information.",
     "tech": [
-      { "label": "Node.js" },
-      { "label": "Telegram Bot API", "variant": "purple" },
-      { "label": "Store Management", "variant": "teal" }
+      {
+        "label": "Node.js"
+      },
+      {
+        "label": "Telegram Bot API",
+        "variant": "purple"
+      },
+      {
+        "label": "Store Management",
+        "variant": "teal"
+      }
     ],
     "links": [
-      { "type": "github", "label": "GitHub", "url": "https://github.com/abbasaghebaty/Yourclean-bot" },
-      { "type": "demo", "label": "Open Bot", "url": "https://t.me/YourClean_bot" }
+      {
+        "type": "github",
+        "label": "GitHub",
+        "url": "https://github.com/abbasaghebaty/Yourclean-bot"
+      },
+      {
+        "type": "demo",
+        "label": "Open Bot",
+        "url": "https://t.me/YourClean_bot"
+      }
+    ]
+  },
+  {
+    "title": "Abbas Assistant Bot",
+    "description": "A personal Telegram assistant for introducing me, my projects and contact methods. The bot is built with a modular structure to provide a simple and professional environment for presenting my activities, skills and projects.",
+    "tech": [
+      {
+        "label": "Node.js"
+      },
+      {
+        "label": "Telegram Bot API",
+        "variant": "purple"
+      },
+      {
+        "label": "Modular Architecture",
+        "variant": "teal"
+      }
+    ],
+    "links": [
+      {
+        "type": "demo",
+        "label": "Open Bot",
+        "url": "https://t.me/aghebaty_bot"
+      }
+    ]
+  },
+  {
+    "title": "Study Planner Bot",
+    "description": "A study planning and monitoring system for managing schoolwork in one place. Track assignments and exams, organize what to study and by when, and keep your study plan and upcoming deadlines under control. Available as both a web dashboard and a Telegram bot.",
+    "tech": [
+      {
+        "label": "JavaScript"
+      },
+      {
+        "label": "Web Dashboard",
+        "variant": "purple"
+      },
+      {
+        "label": "Telegram Bot API",
+        "variant": "teal"
+      },
+      {
+        "label": "Study Planning",
+        "variant": "teal"
+      }
+    ],
+    "links": [
+      {
+        "type": "demo",
+        "label": "Open Bot",
+        "url": "https://t.me/StudyReplanner_bot"
+      }
+    ]
+  },
+  {
+    "title": "Academy AdminX Bot",
+    "description": "A Telegram sales and management bot for an educational package, including product presentation, order registration, payment and user access management. The bot was designed to manage the purchase and access delivery process.",
+    "tech": [
+      {
+        "label": "Node.js"
+      },
+      {
+        "label": "Telegram Bot API",
+        "variant": "purple"
+      },
+      {
+        "label": "Payment & Access Management",
+        "variant": "teal"
+      }
+    ],
+    "links": [
+      {
+        "type": "demo",
+        "label": "Open Bot",
+        "url": "https://t.me/academy_adminx_Bot"
+      }
     ]
   },
   {
     "title": "Personal Portfolio",
     "description": "My personal portfolio and launcher that brings together all of my social links, featured projects and development journey in one place.",
     "tech": [
-      { "label": "HTML" },
-      { "label": "CSS", "variant": "purple" },
-      { "label": "JavaScript" },
-      { "label": "Glassmorphism", "variant": "teal" }
+      {
+        "label": "HTML"
+      },
+      {
+        "label": "CSS",
+        "variant": "purple"
+      },
+      {
+        "label": "JavaScript"
+      },
+      {
+        "label": "Glassmorphism",
+        "variant": "teal"
+      }
     ],
     "links": [
-      { "type": "current", "label": "Current Website" }
+      {
+        "type": "current",
+        "label": "Current Website"
+      }
     ]
   }
 ]
