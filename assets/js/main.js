@@ -4,7 +4,6 @@
 // ========================================
 import { getDomRefs } from './dom-refs.js';
 import { initFooterDate } from './footer-date.js';
-import { getTotalProjects } from './project-count.js';
 import { getYearsExperience } from './experience-calc.js';
 import { initTypingAnimation } from './typing-animation.js';
 import { initFlipClock } from './flip-clock.js';
@@ -20,7 +19,8 @@ import { initSmoothScroll } from './smooth-scroll.js';
 
     initFooterDate(dom.currentYearEl, dom.lastUpdatedEl, now);
 
-    const totalProjects = getTotalProjects(dom.projectsTableBody);
+    // The project count is supplied by projects.js after projects.json loads.
+    // Keep it null here so the stats observer cannot lock in a temporary zero.
     const yearsExperience = getYearsExperience(now);
 
     initTypingAnimation(dom.typingTextEl);
@@ -31,22 +31,25 @@ import { initSmoothScroll } from './smooth-scroll.js';
         statExperienceEl: dom.statExperienceEl,
         statVisitorsEl: dom.statVisitorsEl,
         statsSectionEl: dom.statsSectionEl,
-        totalProjects,
+        totalProjects: null,
         yearsExperience,
     });
 
-    // projects.js loads projects asynchronously from projects.json.
-    // Update the Projects stat when that data becomes available.
+    // Update the count whenever the project data becomes available.
     window.addEventListener('projects:loaded', (event) => {
         const count = event.detail?.count;
-        if (typeof count !== 'number') return;
+        if (!Number.isInteger(count) || count < 0) return;
 
         statValues.projects = count;
         const statEl = dom.statProjectsEl;
-        if (statEl && !statAnimated.projects) {
-            statEl.textContent = String(count);
+
+        // If the stat animation already ran, replace its old value directly.
+        // Otherwise, let the observer animate the newly loaded count.
+        if (statAnimated.projects) {
+            if (statEl) statEl.textContent = String(count);
+        } else {
+            tryAnimateStat('projects');
         }
-        tryAnimateStat('projects');
     });
 
     initVisitorCounter({ statValues, tryAnimateStat, statVisitorsEl: dom.statVisitorsEl });
