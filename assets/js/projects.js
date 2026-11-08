@@ -3,7 +3,7 @@ async function loadProjects() {
     if (!container) return;
 
     try {
-        const res = await fetch('assets/data/projects.json');
+        const res = await fetch('assets/data/projects.json', { cache: 'no-cache' });
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
         const projects = await res.json();
